@@ -11,8 +11,6 @@ module.exports = {
     address:{type:'string'},
     user_id:{type:'number'},
     order_status:{type:'number', isIn:[1,2,3,4,5,6]},
-    
-
   },
 
 };
