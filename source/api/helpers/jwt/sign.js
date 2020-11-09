@@ -1,3 +1,4 @@
+const jwt = require('jsonwebtoken')
 module.exports = {
 
 
@@ -8,7 +9,12 @@ module.exports = {
 
 
   inputs: {
-    userInfo:{type:'json',required:true}
+    userInfo:{type:'json',required:true,
+    description:{
+
+    }
+  
+  }
   },
 
 
@@ -19,14 +25,14 @@ module.exports = {
     },
 
   },
+  sync:true,
 
-
-  fn: async function (inputs,exits) {
+  fn: function (inputs,exits) {
     let {userInfo} = inputs
-    // let jwt.sign({
-    //   exp: Math.floor(Date.now() / 1000) + (60 * 60),
-    //   data: 'foobar'
-    // }, 'secret');
+    let token = jwt.sign({
+      data: userInfo
+    }, process.env.SECRET_KEY, { expiresIn: 60 * 60*24*20 });
+    return token
   }
 
 

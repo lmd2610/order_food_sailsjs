@@ -1,14 +1,13 @@
 module.exports = {
 
 
-  friendlyName: 'Calculate bill',
+  friendlyName: 'Login',
 
 
-  description: '',
+  description: 'Login user.',
 
 
   inputs: {
-    listFood:{type:'ref', required:true},
 
   },
 
@@ -19,8 +18,7 @@ module.exports = {
 
   sync:true,
   fn: function (inputs) {
-    let {listFood} = inputs;
-    
+
     // All done.
     return;
 

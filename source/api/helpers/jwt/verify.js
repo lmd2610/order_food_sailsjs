@@ -1,3 +1,4 @@
+const jwt = require('jsonwebtoken')
 module.exports = {
 
 
@@ -8,7 +9,7 @@ module.exports = {
 
 
   inputs: {
-    
+    token:{type:'string',}
   },
 
 
@@ -19,10 +20,12 @@ module.exports = {
     },
 
   },
+  sync:true,
 
-
-  fn: async function (inputs) {
-    // TODO
+  fn: function (inputs) {
+    let {token} = inputs;
+    let decoded = jwt.verify(token, process.env.SECRET_KEY);
+    return decoded;
   }
 
 
