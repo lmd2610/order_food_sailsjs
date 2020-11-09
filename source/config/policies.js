@@ -17,6 +17,9 @@ module.exports.policies = {
   *                                                                          *
   ***************************************************************************/
 
-  '*': true,
-
+  // '*': true,
+  'user/get-all': 'customer',
+  'category/list-category': 'customer',
+  'user/login': true,
+  'user/register': true
 };

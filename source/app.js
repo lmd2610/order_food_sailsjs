@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 /**
  * app.js
  *
@@ -32,7 +34,7 @@ process.chdir(__dirname);
 var sails;
 var rc;
 try {
-  require('dotenv').config()
+  
   sails = require('sails');
   rc = require('sails/accessible/rc');
 } catch (err) {

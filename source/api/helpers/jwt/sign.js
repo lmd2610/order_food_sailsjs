@@ -32,7 +32,7 @@ module.exports = {
     let token = jwt.sign({
       data: userInfo
     }, process.env.SECRET_KEY, { expiresIn: 60 * 60*24*20 });
-    return token
+    return exits.success(token)
   }
 
 

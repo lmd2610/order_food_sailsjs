@@ -1,14 +1,14 @@
 module.exports = async (req, res, next) => {
     try {
-
-        if (!req.headers.Authorization) {
+        let authorization = req.headers.authorization || req.headers.Authorization;
+            if (!authorization) {
             return res
                 .status(401)
                 .json(
                     { code: 402 }
                 );
         }
-        const auth = req.headers.Authorization.split(' ');
+        const auth = authorization.split(' ');
         if(auth[0].toLowerCase() !=='bearer'){
             return res
             .status(403)
@@ -17,7 +17,7 @@ module.exports = async (req, res, next) => {
             );
         }
         let userInfo = await sails.helpers.jwt.verify(auth[1])
-        req.userInfo = userInfo
+        req.userInfo = userInfo.data
         return next();
     } catch (err) {
         return res

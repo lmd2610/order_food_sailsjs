@@ -20,13 +20,13 @@ module.exports.routes = {
   ***************************************************************************/
 
   '/': { view: 'pages/homepage' },
-  'POST /test':{action:'test'},
   'POST /api/v1/food/list-food': { action: 'food/list-food' },
   'POST /api/v1/food/food-detail': { action: 'food/food-detail' },
   'POST /api/v1/food/calculate-bill': { action: 'food/calculate-bill' },
   'POST /api/v1/user/register': { action: 'user/register' },
   'GET /api/v1/user/get-all': { action: 'user/get-all' },
   'POST /api/v1/user/login': { action: 'user/login' },
+  'POST /api/v1/category/list-category': { action: 'category/list-category' },
   /***************************************************************************
   *                                                                          *
   * More custom routes here...                                               *

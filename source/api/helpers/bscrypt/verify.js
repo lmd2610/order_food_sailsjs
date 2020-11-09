@@ -1,3 +1,4 @@
+const bcrypt = require('bcrypt')
 module.exports = {
 
 
@@ -22,7 +23,7 @@ module.exports = {
   },
   sync:true,
 
-  fn: function (inputs) {
+  fn: function (inputs,exits) {
     let {password,hash}=inputs;
     let compare = bcrypt.compareSync(password, hash);
     return exits.success(compare);
