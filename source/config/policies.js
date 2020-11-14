@@ -17,9 +17,11 @@ module.exports.policies = {
   *                                                                          *
   ***************************************************************************/
 
-  '*': 'bearer',
+  '*': true,
+  'swagger':true,
   'user/get-all': 'customer',
   'category/list-category': 'customer',
-  'user/login': true,
-  'user/register': true
+  'user/login': 'notAuthCustomer',
+  'user/register': 'notAuthCustomer',
+  
 };

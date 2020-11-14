@@ -9,17 +9,11 @@ module.exports = {
 
   attributes: {
     id: { type: 'number', autoIncrement: true, },
-    user_name:{
-      type:'string',
-      required:true,
-      unique:true
-      },
     full_name:{type:'string', required:true},
     image_url:{type:'string'},
     address:{type:'string'},
     mobile:{type:'string'},
-    email:{type:'string'},
-    password:{type:'string'},
+    email:{type:'string'}
 
   },
 

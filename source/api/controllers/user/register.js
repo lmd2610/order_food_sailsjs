@@ -15,7 +15,7 @@ module.exports = {
     mobile: { type: 'string', required: true },
     email: { type: 'string', required: true },
     password: { type: 'string', required: true },
-    password2: { type: 'string', required: true },
+    password2: { type: 'string', required: true }
   },
 
 
@@ -25,15 +25,15 @@ module.exports = {
   sync: true,
 
   fn: function (inputs, exits) {
-    let { phone, user_name, full_name, address, mobile, email, password, password2 } = inputs;
+    let { phone, user_name, full_name, address, mobile, email, password, password2, } = inputs;
 
-    User.findOne({ user_name: user_name })
+    Account.findOne({ username: user_name, type:this.req.typeUser })
       .then((data) => {
         if (data) {
           return exits.success(
             {
               code: 200,
-              message: 'User existed',
+              message: 'Account existed',
               success: true,
               data: {
                 inputs
@@ -54,13 +54,17 @@ module.exports = {
         let passwordHash = sails.helpers.bscrypt.sign(password);
           User.create({
             phone:phone,
-            user_name:user_name,
             full_name:full_name,
             address:address,
             mobile:mobile,
             email:email,
-            password:passwordHash
-          }).then(()=>{
+          }).fetch().then((userInfo)=>{
+            Account.create({
+              username: user_name,
+              password:passwordHash,
+              type:this.req.typeUser,
+              typeId:userInfo.id
+            }).then(()=>{})
             return exits.success(
               {
                 code: 200,
