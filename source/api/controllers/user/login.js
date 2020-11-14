@@ -21,9 +21,9 @@ module.exports = {
   sync: true,
   fn: function (inputs,exits) {
     let { user_name, password, captra } = inputs;
-    User.findOne({ user_name: user_name })
-      .then((userInfo) => {
-        if (!userInfo) {
+    Account.findOne({ username: user_name })
+      .then((accountInfo) => {
+        if (!accountInfo) {
           return exits.success(
             {
               code: 200,
@@ -31,8 +31,8 @@ module.exports = {
               success: true,
             });
         }
-        let checkPassword = sails.helpers.bscrypt.verify(password, userInfo.password)
-        if (userInfo.user_name !== user_name || !checkPassword) {
+        let checkPassword = sails.helpers.bscrypt.verify(password, accountInfo.password)
+        if (accountInfo.username !== user_name || !checkPassword) {
           return exits.success(
             {
               code: 200,
@@ -41,15 +41,17 @@ module.exports = {
             });
         }
         let user = {
-          id: userInfo.id,
+          id: accountInfo.typeId,
         }
         let token = sails.helpers.jwt.sign(user);
-        delete userInfo.password;
+        delete accountInfo.password;
+        delete accountInfo.type;
+        delete accountInfo.typeId;
         return exits.success({
           code: 200,
           message: 'OK',
           success: true,
-          userInfo:userInfo,
+          accountInfo:accountInfo,
           token:token
         })
       })

@@ -29,9 +29,12 @@ module.exports = {
           if(food.length===0){
             return exits.success(
               {
-                  code:403,
+                  code:200,
                   message: 'Food not existed',
-                  success: false,
+                  success: true,
+                  data:{
+                    food:[]
+                  }
               });
           }
           return exits.success(
