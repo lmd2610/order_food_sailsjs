@@ -1,13 +1,14 @@
 module.exports = {
 
 
-  friendlyName: 'Register',
+  friendlyName: 'Update',
 
 
-  description: 'Register user.',
+  description: 'Update user.',
 
 
   inputs: {
+    phone: { type: 'string', required: true },
     user_name: { type: 'string', required: true },
     full_name: { type: 'string', required: true },
     address: { type: 'string', required: true },
@@ -24,21 +25,10 @@ module.exports = {
   sync: true,
 
   fn: function (inputs, exits) {
-    let { user_name, full_name, address, mobile, email, password, password2, } = inputs;
+    let { user_name, full_name, address, mobile, email, password, password2} = inputs;
 
-    Account.findOne({ username: user_name, type:this.req.typeUser })
+    Account.findOne({ id: this.req.userInfo.id ,username: user_name , type: this.req.typeUser })
       .then((data) => {
-        if (data) {
-          return exits.success(
-            {
-              code: 200,
-              message: 'Tài khoản đã tồn tại',
-              success: true,
-              data: {
-                inputs
-              }
-            });
-        }
         if (password !== password2) {
           return exits.success(
             {
@@ -51,31 +41,36 @@ module.exports = {
             });
         }
         let passwordHash = sails.helpers.bscrypt.sign(password);
-          User.create({
+          User.updateOne({
+            id: this.req.userInfo.id
+          }).set({
             full_name:full_name,
             address:address,
             mobile:mobile,
             email:email,
-          }).fetch().then((userInfo)=>{
-            Account.create({
-              username: user_name,
-              password:passwordHash,
+          }).then(()=>{
+            Account.update({
               type:this.req.typeUser,
-              typeId:userInfo.id
-            }).then(()=>{})
+              typeId:this.req.userInfo.id
+            }).set({
+              password:passwordHash,
+            })
+            console.log("hihi")
             return exits.success(
               {
-                code: 201,
-                message: 'Đăng ký thành công',
+                code: 200,
+                message: 'Cập nhật thành công',
                 success: true,
                 
               });
+          }).catch(()=>{
+            console.log("haha")
+            return exits.success(
+              {
+                message: 'Cập nhật thất bại',
+                success: false,
+              });
           })
-        
-        
-          
-       
-        
       })
 
   }
