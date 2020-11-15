@@ -17,8 +17,8 @@ module.exports = {
 
   },
 
-
-  fn: async function (inputs) {
+  sync:true,
+  fn: function (inputs) {
     let {listFood} = inputs;
     
     // All done.

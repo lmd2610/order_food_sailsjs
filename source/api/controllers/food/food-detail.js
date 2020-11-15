@@ -8,7 +8,7 @@ module.exports = {
 
 
   inputs: {
-    foodId:{type:'number', required:true}
+    foodId: { type: 'number', required: true }
   },
 
 
@@ -16,34 +16,38 @@ module.exports = {
 
   },
 
-
-  fn: async function (inputs,exits) {
-    let {foodId}=inputs;
-    try {
-      let foodInfo = await Food.find({id:foodId});
-      if(!foodInfo){
-        return exits.fail({
-          code:1,
-          message:'Không có thông tin của đồ ăn'
-        })
-      }
-      let foodImages = await Food.find({foodId:foodId})
-      if(!foodImages){
-        foodImages = []
-      }
-      foodInfo.foodImages = foodImages;
-      return exits.success({
-        code:0,
-        message: "Thành công",
-        data:{
-          foodInfo
+  sync: true,
+  fn: function (inputs, exits) {
+    let { foodId } = inputs;
+    Food.findOne({ id: foodId })
+      .then((foodInfo) => {
+        if (!foodInfo) {
+          return exits.fail({
+            code: 403,
+            message: 'Food not existed'
+          })
         }
+        return { foodInfo, foodId };
       })
-    } catch (error) {
-      
-    }
+      .then((data) => {
+        FoodImage.find({ food_id: data.foodId })
+          .then((foodImageInfo) => {
+            data.foodInfo.foodImages = foodImageInfo;
+            return exits.success({
+              code: 200,
+              message: "OK",
+              success: true,
+              data: {
+                foodInfo: data.foodInfo
+              }
+            })
+          })
 
-  }
+      })
+  },
 
+  fn: function (params) {
+    
+  } 
 
 };

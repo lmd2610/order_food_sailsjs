@@ -3,9 +3,9 @@ module.exports = async (req, res, next) => {
         let authorization = req.headers.authorization || req.headers.Authorization;
             if (!authorization) {
             return res
-                .status(401)
+                .status(403)
                 .json(
-                    { code: 403}
+                    { code: 403 }
                 );
         }
         const auth = authorization.split(' ');
@@ -13,12 +13,11 @@ module.exports = async (req, res, next) => {
             return res
             .status(403)
             .json(
-                { code: 403}
+                { code: 403 }
             );
         }
         let userInfo = await sails.helpers.jwt.verify(auth[1])
         req.userInfo = userInfo.data
-        req.typeUser = 'customer'
         return next();
     } catch (err) {
         return res

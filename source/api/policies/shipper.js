@@ -18,7 +18,6 @@ module.exports = async (req, res, next) => {
         }
         let userInfo = await sails.helpers.jwt.verify(auth[1])
         req.userInfo = userInfo.data
-        req.typeUser = 'customer'
         return next();
     } catch (err) {
         return res
