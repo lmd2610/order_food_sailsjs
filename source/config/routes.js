@@ -23,10 +23,25 @@ module.exports.routes = {
   'POST /api/v1/food/list-food': { action: 'food/list-food' },
   'POST /api/v1/food/food-detail': { action: 'food/food-detail' },
   'POST /api/v1/food/calculate-bill': { action: 'food/calculate-bill' },
+
+
   'POST /api/v1/user/register': { action: 'user/register' },
-  'GET /api/v1/user/get-all': { action: 'user/get-all' },
   'POST /api/v1/user/login': { action: 'user/login' },
+  'GET /api/v1/user/get-all': { action: 'user/get-all' },
+  'GET /api/v1/user/get-one': { action: 'user/get-one' },
+  'PUT /api/v1/user/update': { action: 'user/update' },
+
+
   'POST /api/v1/category/list-category': { action: 'category/list-category' },
+
+
+  'POST /api/v1/order/create': { action: 'order/create' },
+
+
+  'POST /api/v1/store/create': { action: 'store/create' },
+
+
+  
   /***************************************************************************
   *                                                                          *
   * More custom routes here...                                               *

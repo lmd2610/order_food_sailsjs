@@ -20,8 +20,14 @@ module.exports.policies = {
   '*': true,
   'swagger':true,
   'user/get-all': 'customer',
-  'category/list-category': 'customer',
   'user/login': 'notAuthCustomer',
   'user/register': 'notAuthCustomer',
-  
+  'user/get-one': 'customer',
+  'user/update': 'customer',
+
+  'category/list-category': 'customer',
+
+  'order/create': 'customer',
+
+  'store/create': 'store',
 };

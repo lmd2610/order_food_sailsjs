@@ -44,8 +44,10 @@ module.exports = {
           })
 
       })
+  },
 
-
-  }
+  fn: function (params) {
+    
+  } 
 
 };
