@@ -30,4 +30,5 @@ module.exports.policies = {
   'order/create': 'customer',
 
   'store/create': 'store',
+  'store/get-all': 'customer'
 };

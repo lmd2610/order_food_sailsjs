@@ -27,7 +27,7 @@ module.exports.routes = {
 
   'POST /api/v1/user/register': { action: 'user/register' },
   'POST /api/v1/user/login': { action: 'user/login' },
-  'GET /api/v1/user/get-all': { action: 'user/get-all' },
+  'GET /api/v1/user/get-all': { action: 'user/get-all', cors:false },
   'GET /api/v1/user/get-one': { action: 'user/get-one' },
   'PUT /api/v1/user/update': { action: 'user/update' },
 
@@ -43,7 +43,7 @@ module.exports.routes = {
 
 
   'POST /api/v1/store/create': { action: 'store/create' },
-
+  'GET /api/v1/store/get-all': { action: 'store/get-all' },
 
   
   /***************************************************************************
