@@ -9,7 +9,7 @@ module.exports = {
 
   attributes: {
     id: { type: 'number', autoIncrement: true, },
-    username:{type:'string', unique:true},
+    username:{type:'string', required:true,unique:true},
     password:{type:'string'},
     type:{type:'string', isIn:['customer','shipper','store']},
     typeId:{type:'number'},
