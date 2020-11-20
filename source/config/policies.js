@@ -27,12 +27,18 @@ module.exports.policies = {
 
   'category/list-category': 'customer',
 
+  'order/calculate-bill': 'customer',
   'order/create': 'customer',
+  'order/list-order-by-store': 'store',
 
-  'store/create': 'store',
-  'store/get-all': 'customer'
-  'food/search-food': 'customer',
+  'store/create': 'notAuthStore',
+  'store/get-all': 'customer',
   'store/get-store-by-id': 'customer',
+  'store/login': 'notAuthStore',
+
+  'food/search-food': 'customer',
   'food/get-food-by-storeid': 'customer',
+
+
   'menu/get-menu-by-storeid': 'customer'
 };

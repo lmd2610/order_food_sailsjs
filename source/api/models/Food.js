@@ -24,7 +24,6 @@ module.exports = {
     total_like:{type:'number'},
     store_id:{type:'number'},
     category_id:{type:'number'}
-
   },
 
 };
