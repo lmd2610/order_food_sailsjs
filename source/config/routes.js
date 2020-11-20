@@ -46,6 +46,10 @@ module.exports.routes = {
   'GET /api/v1/store/get-all': { action: 'store/get-all' },
   'GET /api/v1/store/get-store-by-id': { action: 'store/get-store-by-id' },
   'POST /api/v1/store/login': { action: 'store/login' },
+
+
+
+  'POST /api/v1/shipper/create': { action: 'shipper/create' },
   /***************************************************************************
   *                                                                          *
   * More custom routes here...                                               *

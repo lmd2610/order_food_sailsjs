@@ -8,6 +8,8 @@
  * https://sailsjs.com/docs/concepts/policies
  */
 
+const shipper = require("../api/policies/shipper");
+
 module.exports.policies = {
 
   /***************************************************************************
@@ -31,7 +33,7 @@ module.exports.policies = {
   'order/create': 'customer',
   'order/list-order-by-store': 'store',
 
-  'store/create': 'notAuthStore',
+  // 'store/create': 'notAuthStore',
   'store/get-all': 'customer',
   'store/get-store-by-id': 'customer',
   'store/login': 'notAuthStore',
@@ -40,5 +42,8 @@ module.exports.policies = {
   'food/get-food-by-storeid': 'customer',
 
 
-  'menu/get-menu-by-storeid': 'customer'
+  'menu/get-menu-by-storeid': 'customer',
+
+  // 'shipper/create':'notAuthStore',
+  'shipper/login': 'notAuthShipper'
 };
