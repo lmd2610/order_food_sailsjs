@@ -16,7 +16,15 @@ module.exports = async (req, res, next) => {
                 { code: 403}
             );
         }
-        let shipperInfo = await sails.helpers.jwt.verify(auth[1])
+        let shipperInfo = await sails.helpers.jwt.verify(auth[1]);
+        let accountInfo = await Account.findOne({id:shipperInfo.data.id})
+        if(accountInfo.type !== 'shipper'){
+            return res
+            .status(403)
+            .json(
+                { code: 403}
+            );
+        }
         req.shipperInfo = shipperInfo.data
         req.typeUser = 'shipper'
         return next();

@@ -41,7 +41,7 @@ module.exports = {
             });
         }
         let user = {
-          id: accountInfo.typeId,
+          id: accountInfo.id,
         }
         let token = sails.helpers.jwt.sign(user);
         delete accountInfo.password;

@@ -31,6 +31,8 @@ module.exports.routes = {
   'GET /api/v1/user/get-all': { action: 'user/get-all', cors:false },
   'GET /api/v1/user/get-one': { action: 'user/get-one' },
   'PUT /api/v1/user/update': { action: 'user/update' },
+  'POST /api/v1/user/cancel-order':{action:'user/cancel-order'},
+
 
 
   'POST /api/v1/category/list-category': { action: 'category/list-category' },
@@ -50,6 +52,13 @@ module.exports.routes = {
 
 
   'POST /api/v1/shipper/create': { action: 'shipper/create' },
+  'POST /api/v1/shipper/accept-order':{ action: 'shipper/accept-order' },
+  'POST /api/v1/shipper/cancel-order':{ action: 'shipper/cancel-order' },
+  'POST /api/v1/shipper/list-order':{ action: 'shipper/list-order' },
+  'POST /api/v1/shipper/login':{ action: 'shipper/login' },
+  'POST /api/v1/shipper/received-food':{ action: 'shipper/received-food' },
+  'POST /api/v1/shipper/shipped-food':{ action: 'shipper/shipped-food' },
+  
   /***************************************************************************
   *                                                                          *
   * More custom routes here...                                               *

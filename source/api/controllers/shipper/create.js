@@ -34,7 +34,7 @@ module.exports = {
           return exits.success(
             {
               code: 200,
-              message: 'Cửa hàng này đã tồn tại',
+              message: 'Tài khoản shipper đã tồn tại này đã tồn tại',
               success: true,
               data: {
                 inputs

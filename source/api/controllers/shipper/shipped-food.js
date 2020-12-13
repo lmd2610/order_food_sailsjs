@@ -1,8 +1,7 @@
-
 module.exports = {
 
 
-  friendlyName: 'Create bill',
+  friendlyName: 'Shipped food',
 
 
   description: '',
@@ -19,32 +18,33 @@ module.exports = {
   sync: true,
 
   fn: function (inputs, exits) {
-    let { orderId } = inputs;
-    Order.findOne({ id: orderId })
+    let { orderId } = inputs
+
+    Order
+      .findOne({ id: orderId })
       .then((orderInfo) => {
         if (!orderInfo) {
           return exits.success({
             success: false,
-            message: "Không có thông tin đặt hàng"
+            message: "Không có thông tin đơn hàng"
           })
         }
-        if(orderInfo.order_status !==1){
+        if (orderInfo.order_status !== 4) {
           return exits.success({
             success: false,
-            message: "Bạn phải tính đơn hàng trước"
+            message: "Đơn hàng phải xác nhận trước"
           })
         }
         Order
           .updateOne({ id: orderId })
-          .set({ order_status: 2 }) //Trạng thái khi đặt hàng thành công
-          .then(()=>{
+          .set({ order_status: 5 })
+          .then(() => {
             return exits.success({
               success: true,
-              message: "Thanh toán thành công"
+              message: "Đơn hàng đã giao thành công"
             })
-          }) //Trạng thái đặt hàng thành công
+          })
       })
-
   }
 
 

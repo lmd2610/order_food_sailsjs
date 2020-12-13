@@ -41,15 +41,15 @@ module.exports = {
           user_id: this.req.userInfo.id,
           store_id: store_id,
           order_status: 1,// Trạng thái đầu tiên khi đặt hàng => Tính hóa đơn bán hàng
-          total_amount:total_amount
+          total_amount: total_amount
         }).fetch().then((orderInfo) => {
           let orderFoods = [];
           list_food.map(m => {
             let json = {};
-            json.order_id = orderInfo.id,
-              json.food_id = m.food_id,
-              json.quantity = m.quantity,
-              json.price = m.total
+            json.order_id = orderInfo.id;
+            json.food_id = m.food_id;
+            json.quantity = m.quantity;
+            json.price = m.total
             json.options_orderfood = options_orderfood
             orderFoods.push(json);
           })
@@ -59,8 +59,9 @@ module.exports = {
               success: true,
               message: "Thành công",
               data: {
-                total_price,
-                list_food
+                total_price:total_amount,
+                list_food,
+                orderId:orderInfo.id
               }
             })
           });

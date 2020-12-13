@@ -1,15 +1,14 @@
-
 module.exports = {
 
 
-  friendlyName: 'Create bill',
+  friendlyName: 'Cancel order',
 
 
   description: '',
 
 
   inputs: {
-    orderId: { type: 'number' }
+
   },
 
 
@@ -20,32 +19,34 @@ module.exports = {
 
   fn: function (inputs, exits) {
     let { orderId } = inputs;
-    Order.findOne({ id: orderId })
+    Order.findOne({
+      id: orderId
+    })
       .then((orderInfo) => {
         if (!orderInfo) {
           return exits.success({
             success: false,
-            message: "Không có thông tin đặt hàng"
+            message: "Không có thông tin đơn hàng"
           })
         }
-        if(orderInfo.order_status !==1){
+        if (orderInfo.order_status !== 3) {
           return exits.success({
             success: false,
-            message: "Bạn phải tính đơn hàng trước"
+            message: "Đơn hàng của bạn không thể hủy được"
           })
         }
         Order
           .updateOne({ id: orderId })
-          .set({ order_status: 2 }) //Trạng thái khi đặt hàng thành công
-          .then(()=>{
+          .set({ order_status: 7 }) // Shipper hủy đơn hàng
+          .then(() => {
             return exits.success({
               success: true,
-              message: "Thanh toán thành công"
+              message: "Khách hàng hủy đơn hàng thành công"
             })
-          }) //Trạng thái đặt hàng thành công
+          })
       })
-
   }
 
 
 };
+
