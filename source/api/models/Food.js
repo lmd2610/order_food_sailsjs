@@ -15,15 +15,10 @@ module.exports = {
     image:{type:'string'},
     title:{type:'string'},
     content:{type:'string'},
-    rate_avg:{type:'number'},
-    rate_one:{type:'number'},
-    rate_two:{type:'number'},
-    rate_three:{type:'number'},
-    rate_four:{type:'number'},
-    rate_five:{type:'number'},
-    total_like:{type:'number'},
+    menu_id:{type:'number'},
     store_id:{type:'number'},
-    category_id:{type:'number'}
+    category_id:{type:'number'},
+    status:{type:'number', defaultsTo:1}
   },
 
 };

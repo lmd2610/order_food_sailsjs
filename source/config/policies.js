@@ -21,6 +21,7 @@ module.exports.policies = {
 
   '*': true,
   'swagger': true,
+  'swagger/swagger.json': true,
   'user/get-all': 'customer',
   'user/login': 'notAuthCustomer',
   'user/register': 'notAuthCustomer',
