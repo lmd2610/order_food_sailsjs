@@ -8,6 +8,8 @@
  * https://sailsjs.com/docs/concepts/policies
  */
 
+const shipper = require("../api/policies/shipper");
+
 module.exports.policies = {
 
   /***************************************************************************
@@ -24,15 +26,31 @@ module.exports.policies = {
   'user/register': 'notAuthCustomer',
   'user/get-one': 'customer',
   'user/update': 'customer',
+  'user/cancel-order':'customer',
+
 
   'category/list-category': 'customer',
 
+  'order/calculate-bill': 'customer',
   'order/create': 'customer',
+  'order/list-order-by-store': 'store',
 
-  'store/create': 'store',
-  'store/get-all': 'customer'
-  'food/search-food': 'customer',
+  'store/create': 'notAuthStore',
+  'store/get-all': 'customer',
   'store/get-store-by-id': 'customer',
+  'store/login': 'notAuthStore',
+
+  'food/search-food': 'customer',
   'food/get-food-by-storeid': 'customer',
-  'menu/get-menu-by-storeid': 'customer'
+
+
+  'menu/get-menu-by-storeid': 'customer',
+
+  'shipper/create':'notAuthShipper',
+  'shipper/list-order':'shipper',
+  'shipper/login': 'notAuthShipper',
+  'shipper/accept-order': 'shipper',
+  'shipper/cancel-order': 'shipper',
+  'shipper/received-food': 'shipper',
+  'shipper/shipped-food': 'shipper',
 };

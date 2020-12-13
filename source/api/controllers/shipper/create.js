@@ -4,24 +4,29 @@ module.exports = {
   friendlyName: 'Create',
 
 
-  description: 'Create store.',
+  description: 'Create shipper.',
 
 
   inputs: {
     name: { type: 'string' },
     user_name: { type: 'string', required: true },
     password: { type: 'string', required: true },
-    password2: { type: 'string', required: true }
+    password2: { type: 'string', required: true },
+    birthday: { type: 'number' },
+    phone: { type: 'string' },
+    identity_card_number: { type: 'string' },
+    image_id_card: { type: 'json' },
+    is_partner: { type: 'boolean' },
   },
 
 
   exits: {
 
   },
-
   sync: true,
+
   fn: function (inputs, exits) {
-    let { name, user_name, password, password2 } = inputs;
+    let { name, user_name, password, password2, birthday, phone, identity_card_number, image_id_card, is_partner } = inputs;
 
     Account.findOne({ username: user_name, type: this.req.typeUser })
       .then((data) => {
@@ -29,7 +34,7 @@ module.exports = {
           return exits.success(
             {
               code: 200,
-              message: 'Cửa hàng này đã tồn tại',
+              message: 'Tài khoản shipper đã tồn tại này đã tồn tại',
               success: true,
               data: {
                 inputs
@@ -48,26 +53,30 @@ module.exports = {
             });
         }
         let passwordHash = sails.helpers.bscrypt.sign(password);
-        Store.create({
-          name: name
-        }).fetch().then((storeInfo) => {
-
+        Shipper.create({
+          name: name,
+          birthday: birthday,
+          phone: phone,
+          identity_card_number: identity_card_number,
+          image_id_card: image_id_card,
+          is_partner: is_partner
+        }).fetch().then((shipperInfo) => {
           Account.create({
             username: user_name,
             password: passwordHash,
             type: this.req.typeUser,
-            typeId: storeInfo.id
+            typeId: shipperInfo.id
           }).then(() => { })
           return exits.success(
             {
               code: 201,
-              message: 'Đăng ký cửa hàng thành công',
+              message: 'Đăng ký shipper thành công',
               success: true,
             });
         }).catch(() => {
           return exits.success(
             {
-              message: 'Đăng ký cửa hàng thất bại',
+              message: 'Đăng ký shipper thất bại',
               success: false,
             });
         })

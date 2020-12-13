@@ -4,7 +4,7 @@ module.exports = {
   friendlyName: 'Login',
 
 
-  description: 'Login user.',
+  description: 'Login shipper.',
 
 
   inputs: {
@@ -18,8 +18,8 @@ module.exports = {
 
   },
 
-  sync: true,
-  fn: function (inputs,exits) {
+
+  fn: async function (inputs,exits) {
     let { user_name, password, captra } = inputs;
     Account.findOne({ username: user_name, type: this.req.typeUser })
       .then((accountInfo) => {
@@ -51,12 +51,10 @@ module.exports = {
           code: 200,
           message: 'OK',
           success: true,
-          accountInfo:accountInfo,
-          token:token
+          accountInfo: accountInfo,
+          token: token
         })
       })
-  
-
   }
 
 

@@ -1,5 +1,6 @@
 module.exports = async (req, res, next) => {
     try {
+ 
         let authorization = req.headers.authorization || req.headers.Authorization;
             if (!authorization) {
             return res
@@ -16,7 +17,15 @@ module.exports = async (req, res, next) => {
                 { code: 403}
             );
         }
-        let userInfo = await sails.helpers.jwt.verify(auth[1])
+        let userInfo = await sails.helpers.jwt.verify(auth[1]);
+        let accountInfo = await Account.findOne({id:userInfo.data.id})
+        if(accountInfo.type !== 'customer'){
+            return res
+            .status(403)
+            .json(
+                { code: 403}
+            );
+        }
         req.userInfo = userInfo.data
         req.typeUser = 'customer'
         return next();

@@ -11,8 +11,11 @@ module.exports = {
     id: { type: 'number', autoIncrement: true, },
     address: { type: 'string' },
     user_id: { type: 'number' },
-    order_status: { type: 'number', isIn: [1, 2, 3, 4, 5, 6] },
+    store_id: { type: 'number' },
+    shipper_id: { type: 'number' },
+    order_status: { type: 'number', isIn: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] },
+    total_amount:{type:'number'}
   },
-  
+
 };
 
