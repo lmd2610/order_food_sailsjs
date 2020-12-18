@@ -22,7 +22,6 @@ module.exports.routes = {
   '/': { view: 'pages/homepage' },
   'POST /api/v1/food/list-food': { action: 'food/list-food' },
   'POST /api/v1/food/food-detail': { action: 'food/food-detail' },
-  
   'GET /api/v1/food/get-food-by-storeid': { action: 'food/get-food-by-storeid' },
   'GET /api/v1/food/search-food': { action: 'food/search-food' },
 
@@ -32,8 +31,8 @@ module.exports.routes = {
   'GET /api/v1/user/get-one': { action: 'user/get-one' },
   'PUT /api/v1/user/update': { action: 'user/update' },
   'POST /api/v1/user/cancel-order':{action:'user/cancel-order'},
-
-
+  'POST /api/v1/user/rate': { action: 'user/rate' },
+  'POST /api/v1/user/comment': { action: 'user/comment' },
 
   'POST /api/v1/category/list-category': { action: 'category/list-category' },
 
@@ -58,6 +57,10 @@ module.exports.routes = {
   'POST /api/v1/shipper/login':{ action: 'shipper/login' },
   'POST /api/v1/shipper/received-food':{ action: 'shipper/received-food' },
   'POST /api/v1/shipper/shipped-food':{ action: 'shipper/shipped-food' },
+
+  'POST /api/v1/generate-data/create-user': { action: 'generate-data/create-user' },
+  'POST /api/v1/generate-data/create-shipper': { action: 'generate-data/create-shipper' },
+  'POST /api/v1/generate-data/create-store': { action: 'generate-data/create-store' },
   
   /***************************************************************************
   *                                                                          *

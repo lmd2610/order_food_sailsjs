@@ -12,7 +12,6 @@ module.exports = {
     name:{type:'string'},
     init_price:{type:'string'},
     sale_price:{type:'string'},
-    image:{type:'string'},
     title:{type:'string'},
     content:{type:'string'},
     menu_id:{type:'number'},

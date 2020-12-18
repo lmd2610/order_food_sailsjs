@@ -28,6 +28,8 @@ module.exports.policies = {
   'user/get-one': 'customer',
   'user/update': 'customer',
   'user/cancel-order':'customer',
+  'user/rate':'customer',
+  'user/comment':'customer',
 
 
   'category/list-category': 'customer',
@@ -54,4 +56,9 @@ module.exports.policies = {
   'shipper/cancel-order': 'shipper',
   'shipper/received-food': 'shipper',
   'shipper/shipped-food': 'shipper',
+
+
+  'generate-data/create-user':true,
+  'generate-data/create-shipper':true,
+  'generate-data/create-store':true
 };
