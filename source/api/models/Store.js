@@ -9,8 +9,13 @@ module.exports = {
 
   attributes: {
     id: { type: 'number', autoIncrement: true, },
-    name:{type:'string'}
-
+    name:{type:'string'},
+    rate_avg:{type:'number'},
+    rate_one:{type:'number'},
+    rate_two:{type:'number'},
+    rate_three:{type:'number'},
+    rate_four:{type:'number'},
+    rate_five:{type:'number'},
   },
 
 };
