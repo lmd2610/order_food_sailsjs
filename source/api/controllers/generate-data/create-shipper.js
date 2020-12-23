@@ -1,18 +1,15 @@
+const faker = require('faker');
 module.exports = {
 
 
-  friendlyName: 'Create',
+  friendlyName: 'Create user',
 
 
-  description: 'Create shipper.',
+  description: '',
 
 
   inputs: {
-    name: { type: 'string' },
-    user_name: { type: 'string', required: true },
-    password: { type: 'string', required: true },
-    password2: { type: 'string', required: true },
-    phone: { type: 'string' },
+    dodai: { type: 'number' }
   },
 
 
@@ -22,15 +19,22 @@ module.exports = {
   sync: true,
 
   fn: function (inputs, exits) {
-    let { name, user_name, password, password2, phone } = inputs;
+    let { dodai } = inputs
 
-    Account.findOne({ username: user_name, type: this.req.typeUser })
+    let randomName = faker.name.findName(); // Rowan Nikolaus
+    let randomEmail = faker.internet.email(); // Kassandra().Haley@erich.biz
+    let randomAddress = faker.address.city();
+    let randomPhoneNumber = faker.phone.phoneNumber();
+    let user_name = `shipper_${Math.floor(Math.random() * dodai)}`;
+    let password = 123456;
+    let password2 = 123456;
+    Account.findOne({ username: user_name, type: 'shipper' })
       .then((data) => {
         if (data) {
           return exits.success(
             {
               code: 200,
-              message: 'Tài khoản shipper đã tồn tại này đã tồn tại',
+              message: 'Tài khoản đã tồn tại',
               success: true,
               data: {
                 inputs
@@ -50,30 +54,32 @@ module.exports = {
         }
         let passwordHash = sails.helpers.bscrypt.sign(password);
         Shipper.create({
-          name: name,
-          phone: phone,
-          
-        }).fetch().then((shipperInfo) => {
+          name: randomName,
+          birthday: Date.now(),
+          phone: randomPhoneNumber,
+          identity_card_number: '00000000',
+          image_id_card: 'image',
+          is_partner: 1
+        }).fetch().then((userInfo) => {
           Account.create({
             username: user_name,
             password: passwordHash,
-            type: this.req.typeUser,
-            typeId: shipperInfo.id
+            type: 'shipper',
+            typeId: userInfo.id
           }).then(() => { })
           return exits.success(
             {
               code: 201,
-              message: 'Đăng ký shipper thành công',
+              message: 'Đăng ký thành công',
               success: true,
-            });
-        }).catch((error) => {
-          console.log(error)
-          return exits.success(
-            {
-              message: 'Đăng ký shipper thất bại',
-              success: false,
+
             });
         })
+
+
+
+
+
       })
 
   }

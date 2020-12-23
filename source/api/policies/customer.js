@@ -18,8 +18,8 @@ module.exports = async (req, res, next) => {
             );
         }
         let userInfo = await sails.helpers.jwt.verify(auth[1]);
-        let accountInfo = await Account.findOne({id:userInfo.data.id})
-        if(accountInfo.type !== 'customer'){
+        let accountInfo = await Account.findOne({typeId:userInfo.data.id, type:3})
+        if(!accountInfo){
             return res
             .status(403)
             .json(
@@ -27,7 +27,7 @@ module.exports = async (req, res, next) => {
             );
         }
         req.userInfo = userInfo.data
-        req.typeUser = 'customer'
+        req.typeUser = 3
         return next();
     } catch (err) {
         return res

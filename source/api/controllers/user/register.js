@@ -56,6 +56,7 @@ module.exports = {
             address:address,
             mobile:mobile,
             email:email,
+            status:1
           }).fetch().then((userInfo)=>{
             Account.create({
               username: user_name,

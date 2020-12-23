@@ -43,6 +43,10 @@ module.exports.policies = {
   'store/get-store-by-id': 'customer',
   'store/login': 'notAuthStore',
 
+  'store/get-order-store':'store',
+  'store/accept-order':'store',
+  'store/get-detail-order':'store',
+  
   'food/search-food': 'customer',
   'food/get-food-by-storeid': 'customer',
 
