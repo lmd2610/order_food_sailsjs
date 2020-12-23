@@ -24,7 +24,7 @@ module.exports = {
 
   fn: function (inputs) {
     let {token} = inputs;
-    let decoded = jwt.verify(token, process.env.SECRET_KEY);
+    let decoded = jwt.verify(token, process.env.SECRET_KEY || '23JKJEQWDAsadwdw25@5kjflwr39501kdalkwnf');
     return decoded;
   }
 

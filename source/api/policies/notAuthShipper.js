@@ -1,6 +1,6 @@
 module.exports = async (req, res, next) => {
     try {
-        req.typeUser = '2'
+        req.typeUser = 2
         return next();
     } catch (err) {
         return res
