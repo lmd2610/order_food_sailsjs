@@ -31,7 +31,7 @@ module.exports = {
     let {userInfo} = inputs
     let token = jwt.sign({
       data: userInfo
-    }, process.env.SECRET_KEY, { expiresIn: 60 * 60*24*20 });
+    }, process.env.SECRET_KEY ||'23JKJEQWDAsadwdw25@5kjflwr39501kdalkwnf', { expiresIn: 60 * 60*24*20 });
     return exits.success(token)
   }
 

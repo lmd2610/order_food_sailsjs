@@ -1,13 +1,13 @@
 module.exports = {
   serverIP: "127.0.0.1",
   serverID: 2,
-  port: process.env.SERVICE_PORT,
+  port: process.env.SERVICE_PORT||'1337',
   debug: true,
   emulator: true,
   datastores: {
     default: {
-      adapter: process.env.DB_ADAPTER,
-      url: `${process.env.DB_DIALECT}://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`,
+      adapter: process.env.DB_ADAPTER||'sails-mysql',
+      url: `${process.env.DB_DIALECT||'mysql'}://${process.env.DB_USER ||'root'}:${process.env.DB_PASS ||'123'}@${process.env.DB_HOST||'192.168.0.109'}:${process.env.DB_PORT||'3306'}/${process.env.DB_NAME||'orderfood'}`,
     },
   },
   mode: "staging",
