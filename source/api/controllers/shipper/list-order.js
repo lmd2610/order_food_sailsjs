@@ -22,7 +22,7 @@ module.exports = {
     let shipperId = this.req.shipperInfo.id;
     console.log(Date.now())
     Order.find({
-      created_date  : { ">=": Date.now() - 30 * 60 * 1000 },
+      created_date  : { ">=": Date.now() - 86400 *1000 },
       order_status: 2
     })
       .limit(limit).skip(skip)

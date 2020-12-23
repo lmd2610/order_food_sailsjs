@@ -11,7 +11,7 @@ module.exports = {
     id: { type: 'number', autoIncrement: true, },
     username:{type:'string', required:true},
     password:{type:'string'},
-    type:{type:'string', isIn:['customer','shipper','store']},
+    type:{type:'number', isIn:[0,1,2,3]},
     typeId:{type:'number'},
     status:{type:'boolean',defaultsTo:false}
   },

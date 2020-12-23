@@ -47,8 +47,9 @@ module.exports.routes = {
   'GET /api/v1/store/get-all': { action: 'store/get-all' },
   'GET /api/v1/store/get-store-by-id': { action: 'store/get-store-by-id' },
   'POST /api/v1/store/login': { action: 'store/login' },
-
-
+  'GET /api/v1/store/get-order-store': { action: 'store/get-order-store' },
+  'POST /api/v1/store/accept-order': { action: 'store/accept-order' },
+  'GET /api/v1/store/get-detail-order': { action: 'store/get-detail-order' },
 
   'POST /api/v1/shipper/create': { action: 'shipper/create' },
   'POST /api/v1/shipper/accept-order':{ action: 'shipper/accept-order' },
