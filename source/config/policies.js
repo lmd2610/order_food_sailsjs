@@ -47,11 +47,11 @@ module.exports.policies = {
   'store/accept-order':'store',
   'store/get-detail-order':'store',
   
-  'food/search-food': 'customer',
-  'food/get-food-by-storeid': 'customer',
+  'food/search-food': 'notAuthCustomer',
+  'food/get-food-by-storeid': 'notAuthCustomer',
 
 
-  'menu/get-menu-by-storeid': 'customer',
+  'menu/get-menu-by-storeid': 'notAuthCustomer',
 
   'shipper/create':'notAuthShipper',
   'shipper/list-order':'shipper',

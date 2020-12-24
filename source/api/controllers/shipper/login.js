@@ -31,8 +31,8 @@ module.exports = {
               success: true,
             });
         }
-        let checkPassword = sails.helpers.bscrypt.verify(password, accountInfo.password)
-        if (accountInfo.username !== user_name || !checkPassword) {
+        // let checkPassword = sails.helpers.bscrypt.verify(password, accountInfo.password)
+        if (accountInfo.username !== user_name ||accountInfo.password !== password ){//|| !checkPassword) {
           return exits.success(
             {
               code: 200,
