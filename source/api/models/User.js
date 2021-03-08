@@ -8,13 +8,13 @@
 module.exports = {
 
   attributes: {
-    id: { type: 'number', autoIncrement: true, },
-    full_name:{type:'string', required:true},
-    image_url:{type:'string'},
-    address:{type:'string'},
-    mobile:{type:'string'},
-    email:{type:'string'}
 
+    
+    userGroupId: { type: 'number' },
+    phone: { type: 'string' },
+    password: { type: 'string' },
+    email: { type: 'string' },
+    objectId: { type: 'number' },
   },
 
 };

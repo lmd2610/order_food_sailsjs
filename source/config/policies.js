@@ -8,61 +8,16 @@
  * https://sailsjs.com/docs/concepts/policies
  */
 
-const shipper = require("../api/policies/shipper");
-
 module.exports.policies = {
-
-  /***************************************************************************
-  *                                                                          *
-  * Default policy for all controllers and actions, unless overridden.       *
-  * (`true` allows public access)                                            *
-  *                                                                          *
-  ********************foo*******************************************************/
-
-  '*': true,
-  'swagger': true,
-  'swagger/swagger.json': true,
-  'user/get-all': 'customer',
-  'user/login': 'notAuthCustomer',
-  'user/register': 'notAuthCustomer',
-  'user/get-one': 'customer',
-  'user/update': 'customer',
-  'user/cancel-order':'customer',
-  'user/rate':'customer',
-  'user/comment':'customer',
-
-
-  'category/list-category': 'customer',
-
-  'order/calculate-bill': 'customer',
-  'order/create': 'customer',
-  'order/list-order-by-store': 'store',
-
-  'store/create': 'notAuthStore',
-  'store/get-all': 'customer',
-  'store/get-store-by-id': 'customer',
-  'store/login': 'notAuthStore',
-
-  'store/get-order-store':'store',
-  'store/accept-order':'store',
-  'store/get-detail-order':'store',
-  
-  'food/search-food': 'notAuthCustomer',
-  'food/get-food-by-storeid': 'notAuthCustomer',
-
-
-  'menu/get-menu-by-storeid': 'notAuthCustomer',
-
-  'shipper/create':'notAuthShipper',
-  'shipper/list-order':'shipper',
-  'shipper/login': 'notAuthShipper',
-  'shipper/accept-order': 'shipper',
-  'shipper/cancel-order': 'shipper',
-  'shipper/received-food': 'shipper',
-  'shipper/shipped-food': 'shipper',
-
-
-  'generate-data/create-user':true,
-  'generate-data/create-shipper':true,
-  'generate-data/create-store':true
+    "*": true,
+    "order-address/import-order-address": true,
+    "order-address/order-addresses": true,
+    'banner/list': true,
+    "product/search-products": true,
+    "service/list": true,
+    "category/list": true,
+    "like/like-store": true,
+    "food/list-by-store": true,
+    "food/list-by-category": true,
+    "like/like-store":true
 };

@@ -8,10 +8,11 @@
 module.exports = {
 
   attributes: {
-    id:{type:'number', autoIncrement:true},
-    store_id:{type:'number'},
-    user_id:{type:'number'},
-    rate:{type:'number'}
+    id: { type: 'number', autoIncrement : true },
+    customerId:{type:'number'},
+    storeId:{type:'number'},
+    name: { type: 'string' },
+    star: {type:'number'}
   },
 
 };

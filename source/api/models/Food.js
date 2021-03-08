@@ -8,17 +8,46 @@
 module.exports = {
 
   attributes: {
-    id: { type: 'number', autoIncrement: true, },
-    name:{type:'string'},
-    init_price:{type:'string'},
-    sale_price:{type:'string'},
-    title:{type:'string'},
-    content:{type:'string'},
-    menu_id:{type:'number'},
-    store_id:{type:'number'},
-    category_id:{type:'number'},
-    status:{type:'number', defaultsTo:1}
-  },
 
+    name: { type: 'string' },
+    initPrice: { type: 'number' },
+    typeOfFoodId: { type: 'number' },
+    image: { type: 'string' },
+    title: { type: 'string' },
+    content: { type: 'string' },
+    salePrice: { type: 'number' },
+    storeId: { type: 'number' },
+    menuId: { type: 'number' },
+    totalSold: { type: 'number' },
+
+  },
+  searchProduct: async (content, typeOfFoodId, serviceId, skip, limit) => {
+    let query = null
+    let result = null
+    if (limit > 1000) limit =1000
+    if (content) {
+      query = `Select s.* from store s inner join food f on f.storeId = s.id where f.name like "%$1%" group by s.id limit $2,$3`
+      result = await sails.sendNativeQuery(query, [content, skip, limit])
+    }
+    else if (typeOfFoodId) {
+      query = `Select s.* from food f inner join store s on f.storeId = s.id where f.typeOfFoodId = $1 limit $2,$3`
+      result = await sails.sendNativeQuery(query, [typeOfFoodId, skip, limit])
+
+    }
+    else if (serviceId) {
+      query = `select * from service s 
+      inner join typeoffood tof on tof.serviceId = s.id 
+      inner join typeofservice tos on tos.id = s.typeOfServiceId
+      inner join food f on f.typeOfFoodId = tof.id
+      where f.name like "%$1%" group by s.id limit $2,$3;`
+      result = await sails.sendNativeQuery(query, [serviceId, skip, limit])
+    }
+    else {
+      query = `Select s.* where store limit $2,$3`
+      result = await sails.sendNativeQuery(query, [typeOfFoodId, skip, limit])
+    }
+   
+    return result;
+  }
 };
 

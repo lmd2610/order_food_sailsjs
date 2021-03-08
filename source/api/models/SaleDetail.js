@@ -1,5 +1,5 @@
 /**
- * Menu.js
+ * SaleDetail.js
  *
  * @description :: A model definition represents a database table/collection.
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
@@ -9,8 +9,12 @@ module.exports = {
 
   attributes: {
     
-    name: { type: 'number' },
-    storeId: { type: 'number' }
+    foodId: { type: 'number' },
+    saleId: { type: 'number' },
+    totalCostOfGood: { type: 'number' },
+    quantity: { type: 'number' },
+    price: { type: 'number' }
+
   },
 
 };

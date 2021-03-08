@@ -8,14 +8,15 @@
 module.exports = {
 
   attributes: {
-    id: { type: 'number', autoIncrement: true, },
-    name:{type:'string'},
-    rate_avg:{type:'number'},
-    rate_one:{type:'number'},
-    rate_two:{type:'number'},
-    rate_three:{type:'number'},
-    rate_four:{type:'number'},
-    rate_five:{type:'number'},
+
+    name: { type: 'string' },
+    rateOne: { type: 'number' },
+    rateTwo: { type: 'number' },
+    rateThree: { type: 'number' },
+    rateFour: { type: 'number' },
+    rateFive: { type: 'number' },
+    totalSold: { type: 'number' },
+    totalLike: { type: 'number' }
   },
 
 };

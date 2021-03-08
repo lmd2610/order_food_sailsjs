@@ -19,49 +19,17 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  '/': { view: 'pages/homepage' },
-  'POST /api/v1/food/list-food': { action: 'food/list-food' },
-  'POST /api/v1/food/food-detail': { action: 'food/food-detail' },
-  'GET /api/v1/food/get-food-by-storeid': { action: 'food/get-food-by-storeid' },
-  'GET /api/v1/food/search-food': { action: 'food/search-food' },
-
-  'POST /api/v1/user/register': { action: 'user/register' },
-  'POST /api/v1/user/login': { action: 'user/login' },
-  'GET /api/v1/user/get-all': { action: 'user/get-all', cors:false },
-  'GET /api/v1/user/get-one': { action: 'user/get-one' },
-  'PUT /api/v1/user/update': { action: 'user/update' },
-  'POST /api/v1/user/cancel-order':{action:'user/cancel-order'},
-  'POST /api/v1/user/rate': { action: 'user/rate' },
-  'POST /api/v1/user/comment': { action: 'user/comment' },
-
-  'POST /api/v1/category/list-category': { action: 'category/list-category' },
-
-  'GET /api/v1/menu/get-menu-by-id': { action: 'menu/get-menu-by-storeid' },
-
-  'POST /api/v1/order/create': { action: 'order/create' },
-  'POST /api/v1/order/calculate-bill': { action: 'order/calculate-bill' },
-  'POST /api/v1/order/create-bill': { action: 'order/create-bill' },
-  'POST /api/v1/order/list-order-by-store': { action: 'order/list-order-by-store' },
-  
-  'POST /api/v1/store/create': { action: 'store/create' },
-  'GET /api/v1/store/get-all': { action: 'store/get-all' },
-  'GET /api/v1/store/get-store-by-id': { action: 'store/get-store-by-id' },
-  'POST /api/v1/store/login': { action: 'store/login' },
-  'GET /api/v1/store/get-order-store': { action: 'store/get-order-store' },
-  'POST /api/v1/store/accept-order': { action: 'store/accept-order' },
-  'GET /api/v1/store/get-detail-order': { action: 'store/get-detail-order' },
-
-  'POST /api/v1/shipper/create': { action: 'shipper/create' },
-  'POST /api/v1/shipper/accept-order':{ action: 'shipper/accept-order' },
-  'POST /api/v1/shipper/cancel-order':{ action: 'shipper/cancel-order' },
-  'POST /api/v1/shipper/list-order':{ action: 'shipper/list-order' },
-  'POST /api/v1/shipper/login':{ action: 'shipper/login' },
-  'POST /api/v1/shipper/received-food':{ action: 'shipper/received-food' },
-  'POST /api/v1/shipper/shipped-food':{ action: 'shipper/shipped-food' },
-
-  'POST /api/v1/generate-data/create-user': { action: 'generate-data/create-user' },
-  'POST /api/v1/generate-data/create-shipper': { action: 'generate-data/create-shipper' },
-  'POST /api/v1/generate-data/create-store': { action: 'generate-data/create-store' },
+  // '/': { view: 'pages/homepage' },
+  'POST /api/v1/order-address/import-order-address': { action: 'order-address/import-order-address' },
+  'GET /api/v1/order-address/order-addresses': { action: 'order-address/order-addresses' },
+  'PUT /api/v1/order-address/update-order-address': { action: 'order-address/update-order-address' },
+  'GET /api/v1/product/search-products': { action: 'product/search-products' },
+  'GET /api/v1/banner/list': { action: 'banner/list' },
+  'GET /api/v1/service/list': { action: 'service/list' },
+  'GET /api/v1/category/list': { action: 'category/list' },
+  'POST /api/v1/food/list-by-category': { action: 'food/list-by-category' },
+  'POST /api/v1/food/list-by-store': { action: 'food/list-by-store' },
+  'POST /api/v1/like/like-store': { action: 'like/like-store' },
   
   /***************************************************************************
   *                                                                          *

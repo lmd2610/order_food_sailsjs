@@ -8,10 +8,9 @@
 module.exports = {
 
   attributes: {
-    id: { type: 'number', autoIncrement: true, },
-    images:{type:'string'},
-    title:{type:'string'},
-    url:{type:'string'}
+    name: { type: 'string' },
+    image: { type: 'string' },
+    isActive: { type: "bool" }
   },
 
 };

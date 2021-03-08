@@ -8,9 +8,13 @@
 module.exports = {
 
   attributes: {
-    id: { type: 'number', autoIncrement: true, },
-    name:{type:'string'},
-    phone:{type:'string'},
+    
+    name: { type: 'string' },
+    address: { type: 'string' },
+    orderAddressId: { type: 'number' },
+    image: { type: 'string' },
+    userGroupId: { type: 'number' },
+    status: { type: 'number' },
 
   },
 
