@@ -19,7 +19,7 @@ module.exports = {
 
   fn: async function (inputs, exits) {
 
-    let query = `select tos.* from service s 
+    let query = `select s.* from service s 
     inner join typeoffood tof on tof.serviceId = s.id
     inner join typeofservice tos on tos.id = s.typeOfServiceId
     where tos.id = 1 limit 0,16`
@@ -28,7 +28,7 @@ module.exports = {
       code:0,
       message:"Thành công",
       data:{
-        banner:result.rows[0]
+        banner:result.rows
       }
     })
   }

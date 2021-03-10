@@ -19,15 +19,15 @@ module.exports = {
   },
 
 
-  fn: async function (inputs) {
-    let { categoryId } = inputs
+  fn: async function (inputs,exits) {
+    let { categoryId, skip, limit } = inputs
     let query = `select * from food where typeOfFoodId = $1 limit $2,$3`
     let result = await sails.sendNativeQuery(query, [categoryId, skip, limit])
     return exits.success({
       code: 0,
       message: "Thành công",
       data: {
-        foods: result
+        foods: result.rows
       }
     })
   }

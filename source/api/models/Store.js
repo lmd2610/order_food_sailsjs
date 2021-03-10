@@ -18,6 +18,15 @@ module.exports = {
     totalSold: { type: 'number' },
     totalLike: { type: 'number' }
   },
-
+  storeInfo: async (storeId) => {
+    let query = `select * from store where id=$1`;
+    let result = await sails.sendNativeQuery(query, [storeId]);
+    return result;
+  },
+  productInStoreInfo: async (storeId) => {
+    let query = `select * from food where storeId = $1`;
+    let result = await sails.sendNativeQuery(query, [storeId]);
+    return result.rows[0];
+  }
 };
 

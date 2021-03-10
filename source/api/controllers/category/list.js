@@ -25,7 +25,7 @@ module.exports = {
       code: 0,
       message: "Thành công",
       data: {
-        category: result
+        category: result.rows
       }
     })
   }

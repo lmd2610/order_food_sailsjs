@@ -19,7 +19,7 @@ module.exports = {
     return result;
   },
   customerLike:async()=>{
-    let query =  `callDC`
+    let query =  `call`
   }
 };
 

@@ -27,10 +27,14 @@ module.exports.routes = {
   'GET /api/v1/banner/list': { action: 'banner/list' },
   'GET /api/v1/service/list': { action: 'service/list' },
   'GET /api/v1/category/list': { action: 'category/list' },
-  'POST /api/v1/food/list-by-category': { action: 'food/list-by-category' },
-  'POST /api/v1/food/list-by-store': { action: 'food/list-by-store' },
-  'POST /api/v1/like/like-store': { action: 'like/like-store' },
-  
+  'GET /api/v1/food/list-by-category': { action: 'food/list-by-category' },
+  'GET /api/v1/food/list-by-store': { action: 'food/list-by-store' },
+  'POST /api/v1/like/like-store': { action: 'like/like-store' },//
+  'GET /api/v1/store/info': { action: 'store/info' },//
+  'POST /api/v1/customer/check-email': { action: 'customer/check-email' },
+  'POST /api/v1/customer/check-otp': { action: 'customer/check-otp' },
+  'POST /api/v1/customer/register': { action: 'customer/register' },
+  'POST /api/v1/test': { action: 'test' },
   /***************************************************************************
   *                                                                          *
   * More custom routes here...                                               *

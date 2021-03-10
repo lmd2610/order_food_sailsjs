@@ -19,5 +19,9 @@ module.exports.policies = {
     "like/like-store": true,
     "food/list-by-store": true,
     "food/list-by-category": true,
-    "like/like-store":true
+    "like/like-store": true,
+    "customer/check-email": true,
+    "customer/check-otp": true,
+    "customer/register":true,
+    "test": true
 };

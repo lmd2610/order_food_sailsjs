@@ -23,7 +23,7 @@ module.exports = {
     let query = null;
     let result = null;
     if (content || content == "") {
-      query =  `select * from food where storeId = $1 and name like "%$2%"`
+      query =  `select * from food where storeId = $1 and name like concat("%",$2,"%")`
       result = await sails.sendNativeQuery(query,[storeId,content])
     }
     else{
@@ -34,7 +34,7 @@ module.exports = {
       code:0,
       message:"Thành công",
       data:{
-        food:result
+        food:result.rows
       }
     })
   }

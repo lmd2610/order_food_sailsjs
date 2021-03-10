@@ -24,9 +24,9 @@ module.exports = {
   searchProduct: async (content, typeOfFoodId, serviceId, skip, limit) => {
     let query = null
     let result = null
-    if (limit > 1000) limit =1000
+    if (limit > 1000) limit = 1000
     if (content) {
-      query = `Select s.* from store s inner join food f on f.storeId = s.id where f.name like "%$1%" group by s.id limit $2,$3`
+      query = `Select s.* from store s inner join food f on f.storeId = s.id where f.name like concat("%",$1,"%") group by s.id limit $2,$3`
       result = await sails.sendNativeQuery(query, [content, skip, limit])
     }
     else if (typeOfFoodId) {
@@ -35,19 +35,21 @@ module.exports = {
 
     }
     else if (serviceId) {
-      query = `select * from service s 
+      query = `select st.*
+      from service s 
       inner join typeoffood tof on tof.serviceId = s.id 
       inner join typeofservice tos on tos.id = s.typeOfServiceId
       inner join food f on f.typeOfFoodId = tof.id
-      where f.name like "%$1%" group by s.id limit $2,$3;`
+      inner join store st on st.id = f.storeId
+      where s.id = $1 group by s.id limit $2,$3;`
       result = await sails.sendNativeQuery(query, [serviceId, skip, limit])
     }
     else {
       query = `Select s.* where store limit $2,$3`
       result = await sails.sendNativeQuery(query, [typeOfFoodId, skip, limit])
     }
-   
-    return result;
+
+    return result.rows;
   }
 };
 

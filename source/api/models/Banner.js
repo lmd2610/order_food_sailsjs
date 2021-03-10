@@ -10,7 +10,7 @@ module.exports = {
   attributes: {
     name: { type: 'string' },
     image: { type: 'string' },
-    isActive: { type: "bool" }
+    isActive: { type: "number" }
   },
 
 };

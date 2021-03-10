@@ -9,7 +9,7 @@ module.exports = {
 
   attributes: {
     
-    name: { type: 'number' },
+    name: { type: 'string' },
     storeId: { type: 'number' }
   },
 

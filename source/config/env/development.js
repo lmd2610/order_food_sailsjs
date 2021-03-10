@@ -6,8 +6,8 @@ module.exports = {
   emulator: true,
   datastores: {
     default: {
-      adapter: process.env.DB_ADAPTER||'sails-mysql',
-      url: `${process.env.DB_DIALECT||'mysql'}://${process.env.DB_USER||'root'}:${process.env.DB_PASS||'1234'}@${process.env.DB_HOST||'127.0.0.1'}:${process.env.DB_PORT||'3306'}/${process.env.DB_NAME||'orderfood'}`,
+      adapter: process.env.DB_ADAPTER || 'sails-mysql',
+      url: `${process.env.DB_DIALECT || 'mysql'}://${process.env.DB_USER || 'root'}:${process.env.DB_PASS || '1234'}@${process.env.DB_HOST || '127.0.0.1'}:${process.env.DB_PORT || '3306'}/${process.env.DB_NAME || 'orderfood'}`,
     },
   },
   mode: "staging",
@@ -47,15 +47,15 @@ module.exports = {
   },
 
   redis: {
-    host: process.env.REDIS_HOST,
-    port: process.env.REDIS_PORT,
+    host: process.env.REDIS_HOST || "localhost",
+    port: process.env.REDIS_PORT || 6379,
     password: process.env.REDIS_PASSWORD,
     db: process.env.REDIS_DB,
   },
   custom: {
     redis: {
-      host: process.env.REDIS_HOST,
-      port: process.env.REDIS_PORT,
+      host: process.env.REDIS_HOST || "localhost",
+      port: process.env.REDIS_PORT || 6379,
       password: process.env.REDIS_PASSWORD,
     },
     debug: true,
