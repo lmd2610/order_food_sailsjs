@@ -17,6 +17,11 @@ module.exports = {
     status: { type: 'number' },
 
   },
+  shipperInfo:async (shipperId)=>{
+    let query = `select * from shipper where id = $1`
+    let result = await sails.sendNativeQuery(query,[shipperId]);
+    return result.rows
+  }
 
 };
 

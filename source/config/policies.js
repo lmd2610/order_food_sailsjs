@@ -23,5 +23,7 @@ module.exports.policies = {
     "customer/check-email": true,
     "customer/check-otp": true,
     "customer/register":true,
-    "test": true
+    "shipper/list":true,
+    "test": true,
+    "shipper/update":true
 };
