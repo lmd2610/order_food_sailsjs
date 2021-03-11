@@ -36,7 +36,8 @@ module.exports.routes = {
   'POST /api/v1/customer/register': { action: 'customer/register' },
   'POST /api/v1/test': { action: 'test' },
   'GET /api/v1/shipper/list': { action: 'shipper/list' },
-  'PUT /api/v1/shipper/update': { action: 'shipper/update' }
+  'PUT /api/v1/shipper/update': { action: 'shipper/update' },
+  'POST /api/v1/customer/login': { action: 'customer/login' },
   /***************************************************************************
   *                                                                          *
   * More custom routes here...                                               *

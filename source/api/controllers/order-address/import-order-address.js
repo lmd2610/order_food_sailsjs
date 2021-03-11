@@ -23,8 +23,8 @@ module.exports = {
   fn: async function (inputs,exits) {
     let {address,type}=inputs
     try {
-      // let customerId = this.req.customer.id
-      let customerId = 1;
+      let customerId = this.req.customer.id
+      // let customerId = 1;
       await OrderAddress.importOrderAddress(address,type,customerId)
       return exits.success({
         code:0,

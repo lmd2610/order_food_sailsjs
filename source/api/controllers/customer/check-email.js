@@ -50,11 +50,18 @@ module.exports = {
       let code = 20;
       let message = "Tài khoản không tồn tại vui lòng chuyển sang trang nhập OTP"
       if (customerInfoByEmail.length > 0) {
+        let user = {
+          email: email,
+        }
+        let token = sails.helpers.rsa.encrypt(user, 3000)
         code = 10;
         message = "Tài khoản tồn tại vui lòng chuyển sang trang nhập mk"
         return exits.success({
           code: code,
-          message: message
+          message: message,
+          data: {
+            token
+          }
         })
       }
      

@@ -49,11 +49,11 @@ module.exports = {
     while (otp_string.length < 6) {
       otp_string = "0" + otp_string;
     }
-    if(otp_string.length > 6){
+    if (otp_string.length > 6) {
       otp_string = otp_string.substr(otp_string.length - 6)
     }
     let OTP = otp_string;
-    
+
     var content = '';
     content += `
       <div style="padding: 10px; background-color: #003375">
@@ -81,6 +81,11 @@ module.exports = {
       }
     });
     return OTP;
+  },
+  createCustomer: async (name, birth, password, email) => {
+    let query = `call REGISTER_CUSTOMER($1,$2,$3,$4,$5)`;
+    let result = await sails.sendNativeQuery(query, [name, birth, password, email, Date.now()])
+    return result;
   }
 };
 

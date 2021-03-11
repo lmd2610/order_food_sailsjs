@@ -16,6 +16,10 @@ module.exports = {
     email: { type: 'string' },
     objectId: { type: 'number' },
   },
-
+  userInfoByEmail:async (email)=>{
+    let query = `select u.* from customer c inner join user u on u.objectId = c.id where u.userGroupId = 1 and email = $1`
+    let result = await sails.sendNativeQuery(query, [email]);
+    return result.rows
+  }
 };
 

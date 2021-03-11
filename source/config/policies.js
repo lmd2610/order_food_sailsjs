@@ -10,13 +10,14 @@
 
 module.exports.policies = {
     "*": true,
-    "order-address/import-order-address": true,
-    "order-address/order-addresses": true,
+    "order-address/import-order-address": "customer",
+    "order-address/order-addresses": "customer",
+    'order-address/update-order-address':"customer",
     'banner/list': true,
     "product/search-products": true,
     "service/list": true,
     "category/list": true,
-    "like/like-store": true,
+    "like/like-store": "customer",
     "food/list-by-store": true,
     "food/list-by-category": true,
     "like/like-store": true,
@@ -25,5 +26,6 @@ module.exports.policies = {
     "customer/register":true,
     "shipper/list":true,
     "test": true,
-    "shipper/update":true
+    "shipper/update":true,
+    "customer/login":true
 };
