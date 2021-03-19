@@ -27,5 +27,7 @@ module.exports.policies = {
     "shipper/list":true,
     "test": true,
     "shipper/update":true,
-    "customer/login":true
+    "customer/login":true,
+    'sale/calculate-bill':'customer',
+    'sale/create-bill':'customer',
 };

@@ -26,21 +26,28 @@ module.exports = {
     let result = null
     if (limit > 1000) limit = 1000
     if (content) {
-      query = `Select s.* from store s inner join food f on f.storeId = s.id where f.name like concat("%",$1,"%") group by s.id limit $2,$3`
+      query = `Select s.*,sb.id from store s 
+      inner join food f on f.storeId = s.id 
+      inner join storebranch sb on sb.storeId =s.id
+      where f.name like concat("%",$1,"%") group by s.id limit $2,$3`
       result = await sails.sendNativeQuery(query, [content, skip, limit])
     }
     else if (typeOfFoodId) {
-      query = `Select s.* from food f inner join store s on f.storeId = s.id where f.typeOfFoodId = $1 limit $2,$3`
+      query = `Select s.*,,sb.id from food f 
+      inner join store s on f.storeId = s.id 
+      inner join storebranch sb on sb.storeId =s.id
+      where f.typeOfFoodId = $1 limit $2,$3`
       result = await sails.sendNativeQuery(query, [typeOfFoodId, skip, limit])
 
     }
     else if (serviceId) {
-      query = `select st.*
+      query = `select st.*,sb.id
       from service s 
       inner join typeoffood tof on tof.serviceId = s.id 
       inner join typeofservice tos on tos.id = s.typeOfServiceId
       inner join food f on f.typeOfFoodId = tof.id
       inner join store st on st.id = f.storeId
+      inner join storebranch sb on sb.storeId =st.id
       where s.id = $1 group by s.id limit $2,$3;`
       result = await sails.sendNativeQuery(query, [serviceId, skip, limit])
     }
@@ -50,6 +57,15 @@ module.exports = {
     }
 
     return result.rows;
+  },
+  listFood: async (list)=>{
+    let str = "";
+    for (let i = 0; i < list.length; i++) {
+      str += list.foodId
+    }
+    let query = `select * from food where id in($1)`
+    let result = await sails.sendNativeQuery(query, [str])
+    return result
   }
 };
 

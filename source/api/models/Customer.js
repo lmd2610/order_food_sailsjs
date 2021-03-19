@@ -86,6 +86,11 @@ module.exports = {
     let query = `call REGISTER_CUSTOMER($1,$2,$3,$4,$5)`;
     let result = await sails.sendNativeQuery(query, [name, birth, password, email, Date.now()])
     return result;
+  },
+  customerInfoById: async(id)=>{
+    let query =`select * from customer where id = $1`;
+    let result = await sails.sendNativeQuery(query, [id]);
+    return result.rows
   }
 };
 
