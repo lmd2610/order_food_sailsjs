@@ -24,7 +24,7 @@ module.exports = {
     try {
       let codeCheck = sails.helpers.rsa.verify(token)
       let email = codeCheck.email;
-      let userInfo = await User.userInfoByEmail(email)
+      let userInfo = await User.userInfoByEmail(email,1)
       if (!userInfo) {
         throw "user_not_exist"
       }

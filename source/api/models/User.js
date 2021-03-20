@@ -9,17 +9,18 @@ module.exports = {
 
   attributes: {
 
-    
+
     userGroupId: { type: 'number' },
     phone: { type: 'string' },
     password: { type: 'string' },
     email: { type: 'string' },
     objectId: { type: 'number' },
   },
-  userInfoByEmail:async (email)=>{
-    let query = `select u.* from customer c inner join user u on u.objectId = c.id where u.userGroupId = 1 and email = $1`
-    let result = await sails.sendNativeQuery(query, [email]);
+  userInfoByEmail: async (email, type) => {
+    let query = `select u.* from customer c inner join user u on u.objectId = c.id where u.userGroupId = $1 and email = $2`
+    let result = await sails.sendNativeQuery(query, [type, email]);
     return result.rows
-  }
+  },
+
 };
 

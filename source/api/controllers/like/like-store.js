@@ -10,7 +10,7 @@ module.exports = {
 
 
   inputs: {
-    storeId:{type:'string'}
+    storeId: { type: 'string' }
   },
 
 
@@ -19,17 +19,20 @@ module.exports = {
   },
 
 
-  fn: async function (inputs,exits) {
-    let {storeId}=inputs;
-    let customerId  = this.req.customer.id
-    let likeInfo = await LikeStore.likeInfo()
-    if(!likeInfo){
-
+  fn: async function (inputs, exits) {
+    let { storeId } = inputs;
+    let customerId = this.req.customer.id
+    let likeInfo = await LikeStore.likeInfo(customerId, storeId)
+    if (!likeInfo) {
+      await LikeStore.customerLike(customerId, storeId)
     }
-    else{
-      
+    else {
+      await LikeStore.customerDislike(customerId, storeId)
     }
-
+    return exits.success({
+      code: 0,
+      message: "Thành công"
+    })
   }
 
 

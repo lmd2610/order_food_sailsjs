@@ -8,7 +8,7 @@
 module.exports = {
 
   attributes: {
-    
+
     foodId: { type: 'number' },
     saleId: { type: 'number' },
     totalCostOfGood: { type: 'number' },
@@ -16,6 +16,10 @@ module.exports = {
     price: { type: 'number' }
 
   },
-
+  saleDetailInfos: async (saleId) => {
+    let query = `select * from orderdetail where saleId = $1`;
+    let result = await sails.sendNativeQuery(query, [saleId]);
+    return result.rows
+  }
 };
 

@@ -8,10 +8,14 @@
 module.exports = {
 
   attributes: {
-    
-    name: { type: 'string' },
-    
-  },
 
+    name: { type: 'string' },
+
+  },
+  createAdmin: async (name, password, email) => {
+    let query = `call REGISTER_ADMIN($1,$2,$3,$4)`;
+    let result = await sails.sendNativeQuery(query, [name, password, email, Date.now()])
+    return result;
+  }
 };
 

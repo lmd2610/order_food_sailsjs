@@ -29,7 +29,7 @@ module.exports = {
   insertSale: async (customerId, typeOfSaleId, storeBranchId, totalPrice, codeVoucher, discountCode, saleDetail, address) => {
     try {
       let query = `call INSERT_SALE($1,$2,$3,$4,$5,$6,$7,$8,$9)`
-      await sails.sendNativeQuery(query, [customerId, typeOfSaleId, storeBranchId, totalPrice, codeVoucher, discountCode, saleDetailaddress, Date.now()])
+      await sails.sendNativeQuery(query, [customerId, typeOfSaleId, storeBranchId, totalPrice, codeVoucher, discountCode, saleDetail,address, Date.now()])
       return
     } catch (error) {
       console.log("insert_Sale:: ", error)
@@ -37,14 +37,19 @@ module.exports = {
     }
   },
   saleHeaderInfoById: async (saleId) => {
-    let query =`select * from saleheader where id = $1`;
+    let query = `select * from saleheader where id = $1`;
     let result = await sails.sendNativeQuery(query, [saleId]);
     return result.rows;
   },
-  updateSaleHeader:async(saleId)=>{
-    let query= `update saleheader set typeOfSaleId = 2 where id = $1`
-    await sails.sendNativeQuery(query,saleId);
+  updateSaleHeader: async (saleId) => {
+    let query = `update saleheader set typeOfSaleId = 2 where id = $1`
+    await sails.sendNativeQuery(query, saleId);
     return
+  },
+  saleHeaderInfoByCustomer: async (customerId) => {
+    let query = `select * from orderheader where customerId = $1 and typeOfSaleId = 7`
+    let result = await sails.sendNativeQuery(query, [customerId]);
+    return result.rows;
   }
 };
 
