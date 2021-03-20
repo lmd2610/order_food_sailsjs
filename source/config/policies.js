@@ -20,7 +20,6 @@ module.exports.policies = {
     "like/like-store": "customer",
     "food/list-by-store": true,
     "food/list-by-category": true,
-    "like/like-store": true,
     "customer/check-email": true,
     "customer/check-otp": true,
     "customer/register": true,
@@ -36,5 +35,7 @@ module.exports.policies = {
     'shipper/register': 'admin',
     'shipper/login': true,
     'admin/login': true,
-    'admin/register': 'admin'
+    'admin/register': true,
+    'store/register': 'admin',
+    'store/login': true
 };

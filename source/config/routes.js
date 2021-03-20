@@ -38,15 +38,17 @@ module.exports.routes = {
   'GET /api/v1/shipper/list': { action: 'shipper/list' },
   'PUT /api/v1/shipper/update': { action: 'shipper/update' },
   'POST /api/v1/customer/login': { action: 'customer/login' },
-  'POST /api/v1/sale/calculate-bill': { action: 'sale/calculate-bill' },
+  'POST /api/v1/sale/calculate-bill': { action: 'sale/calculate-bill' },//
   'POST /api/v1/sale/create-bill': { action: 'sale/create-bill' },
-  'POST /api/v1/sale/list-order-success': { action: 'sale/list-order-success' },
+  'POST /api/v1/sale/list-order-success': { action: 'sale/list-order-success' },//
   'POST /api/v1/sale/sale-detail': { action: 'sale/sale-detail' },
   'POST /api/v1/like/list-like': { action: 'like/list-like' },
   'POST /api/v1/shipper/register': { action: 'shipper/register' },
   'POST /api/v1/admin/login': { action: 'admin/login' },
   'POST /api/v1/admin/register': { action: 'admin/register' },
   'POST /api/v1/shipper/login': { action: 'shipper/login' },
+  'POST /api/v1/store/register': { action: 'store/register' },
+  'POST /api/v1/store/login': { action: 'store/login' },
   /***************************************************************************
   *                                                                          *
   * More custom routes here...                                               *

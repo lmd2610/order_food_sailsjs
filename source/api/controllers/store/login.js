@@ -4,7 +4,7 @@ module.exports = {
   friendlyName: 'Login',
 
 
-  description: 'Login admin.',
+  description: 'Login store.',
 
 
   inputs: {
@@ -18,10 +18,10 @@ module.exports = {
   },
 
 
-  fn: async function (inputs, exits) {
-    let { email, password } = inputs
+  fn: async function (inputs) {
 
-    let userInfo = await User.userInfoByEmail(email, 0)
+    let { email, password } = inputs
+    let userInfo = await User.userInfoByEmail(email, 3)
     if (!userInfo) {
       throw "user_not_exist"
     }

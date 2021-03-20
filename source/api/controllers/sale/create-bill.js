@@ -24,13 +24,13 @@ module.exports = {
     let customerId = this.req.customer.id
     try {
       let saleHeaderInfo = await SaleHeader.saleHeaderInfoById(saleId)
-      if (saleHeaderInfo.customerId !== customerId) {
+      if (saleHeaderInfo[0].customerId !== customerId) {
         return exits.success({
           code: 1,
           message: "Bạn không có đơn hàng này"
         })
       }
-      if (saleHeaderInfo.typeOfSaleId !== 1) {
+      if (saleHeaderInfo[0].typeOfSaleId !== 1) {
         return exits.success({
           code: 1,
           message: "Đơn hàng của bạn đã hoàn thành"

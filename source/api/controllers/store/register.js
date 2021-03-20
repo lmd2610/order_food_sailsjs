@@ -1,10 +1,12 @@
+const Store = require("../../models/Store");
+
 module.exports = {
 
 
   friendlyName: 'Register',
 
 
-  description: 'Register admin.',
+  description: 'Register store.',
 
 
   inputs: {
@@ -22,19 +24,19 @@ module.exports = {
 
   fn: async function (inputs, exits) {
     let { name, password, confimPassword, email } = inputs;
-    let userInfo = await User.userInfoByEmail(email, 0);
-    if (userInfo.length !==0) {
+    let userInfo = await User.userInfoByEmail(email, 3);
+    if (userInfo) {
       throw "user_existed"
     }
     if (password !== confimPassword) {
       throw "password not match"
     }
     password = sails.helpers.bscrypt.sign(password);
-    let adminInfo = await Admin.createAdmin(name, password, email)
-    let admin = {
-      id: adminInfo.rows[0][0].v_user_id
+    let storeId = await Store.createStore(name, password, email)
+    let store = {
+      id: storeId.rows[0][0]
     }
-    let token = sails.helpers.jwt.sign(admin)
+    let token = sails.helpers.jwt.sign(store)
     return exits.success({
       code: 0,
       message: "Thành công",

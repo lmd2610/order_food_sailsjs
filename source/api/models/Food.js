@@ -61,11 +61,16 @@ module.exports = {
   listFood: async (list)=>{
     let str = "";
     for (let i = 0; i < list.length; i++) {
-      str += list.foodId
+      if(i!=list.length-1){
+        str += `${list[i].foodId},`
+      }
+      else{
+        str += `${list[i].foodId}`
+      }
     }
-    let query = `select * from food where id in($1)`
-    let result = await sails.sendNativeQuery(query, [str])
-    return result
+    let query = `select * from food where id in (${str})`
+    let result = await sails.sendNativeQuery(query)
+    return result.rows
   }
 };
 

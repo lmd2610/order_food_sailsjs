@@ -21,7 +21,6 @@ module.exports = {
   fn: async function (inputs, exits) {
     let { email } = inputs;
     try {
-
       let checkEmail = await sails.helpers.common.validateEmail(email)
       if (!checkEmail) {
         return exits.success({

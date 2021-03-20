@@ -11,7 +11,6 @@ module.exports = {
 
     name: { type: 'string' },
     address: { type: 'string' },
-
     image: { type: 'string' },
     userGroupId: { type: 'number' },
     status: { type: 'number' },

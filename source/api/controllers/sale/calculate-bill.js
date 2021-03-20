@@ -25,7 +25,6 @@ module.exports = {
     }
   ]
     `},
-    typeOfSaleId: { type: 'number' },
     storeBranchId: { type: 'number' }
   },
 
@@ -37,7 +36,7 @@ module.exports = {
 
   fn: async function (inputs, exits) {
 
-    let { list, typeOfSaleId, storeBranchId } = inputs;
+    let { list, storeBranchId } = inputs;
     let customerId = this.req.customer.id
     let totalPrice = 0;
     let discountCode = 0
@@ -52,20 +51,22 @@ module.exports = {
       let listFood = await Food.listFood(list);
       for (let i = 0; i < listFood.length; i++) {
         for (let j = 0; j < list.length; j++) {
-          if (list.foodId == listFood.id) {
-            totalPrice += listFood.salePrice * list.quantity
-            saleDetail += `${listFood.id},${listFood.salePrice * list.quantity},${list.quantity},${listFood.salePrice};`
+          if (list[i].foodId == listFood[j].id) {
+            totalPrice += listFood[j].salePrice * list[i].quantity
+            saleDetail += `${listFood[j].id},${listFood[j].salePrice * list[i].quantity},${list[i].quantity},${listFood[j].salePrice};`
           }
 
         }
       }
-      await SaleHeader.insertSale(customerId, typeOfSaleId,
+      let saleId = await SaleHeader.insertSale(customerId, 1,
         storeBranchId, totalPrice, codeVoucher,
         discountCode, saleDetail, customerInfoById.address)
       return exits.success({
         code: 0,
         message: "Bạn đã tạo đơn hàng thành công",
-     
+        data:{
+          saleId
+        }
       })
     } catch (error) {
       return exits.success({

@@ -24,7 +24,7 @@ module.exports = {
     let { saleId } = inputs
     let customerId = this.req.customer.id;
     let saleHeaderInfoById = await SaleHeader.saleHeaderInfoById(saleId);
-    if (saleHeaderInfoById.typeOfSaleId !== 7 && saleHeaderInfoById.customerId !== customerId) {
+    if (saleHeaderInfoById[0].typeOfSaleId !== 7 && saleHeaderInfoById[0].customerId !== customerId) {
       return exits.success({
         code: 1,
         message: "Bạn chưa hoàn thành đơn hàng"

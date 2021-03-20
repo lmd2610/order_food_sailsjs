@@ -10,7 +10,7 @@ module.exports = {
 
 
   inputs: {
-    storeId: { type: 'string' }
+    storeId: { type: 'number' }
   },
 
 
@@ -23,11 +23,16 @@ module.exports = {
     let { storeId } = inputs;
     let customerId = this.req.customer.id
     let likeInfo = await LikeStore.likeInfo(customerId, storeId)
-    if (!likeInfo) {
+
+    if (likeInfo.length == 0) {
       await LikeStore.customerLike(customerId, storeId)
     }
     else {
-      await LikeStore.customerDislike(customerId, storeId)
+      let status = 0
+      if (likeInfo[0].isActive == 0) {
+        status = 1;
+      }
+      await LikeStore.customerDislike(customerId, storeId, status)
     }
     return exits.success({
       code: 0,

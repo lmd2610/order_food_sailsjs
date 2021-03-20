@@ -14,7 +14,7 @@ module.exports = {
     isActive: { type: 'number' }
   },
   likeInfo: async (customerId, storeId) => {
-    let query = `select * from likestore ls where ls.customerId = $1 and ls.storeId = $2 and ls.isActive =1`
+    let query = `select * from likestore ls where ls.customerId = $1 and ls.storeId = $2`
     let result = await sails.sendNativeQuery(query, [customerId, storeId])
     return result.rows;
   },
@@ -25,12 +25,12 @@ module.exports = {
   },
   customerLike: async (customerId, storeId) => {
     let query = `call CREATE_LIKE($1,$2,$3)`;
-    let result = await sails.sendNativeQuery(query, [customerId, storeId, Date.now()]);
+    let result = await sails.sendNativeQuery(query, [storeId, customerId, Date.now()]);
     return result.rows
   },
-  customerDislike: async (customerId, storeId) => {
-    let query = `call DIS_LIKE($1,$2,$3)`;
-    let result = await sails.sendNativeQuery(query, [customerId, storeId, Date.now()]);
+  customerDislike: async (customerId, storeId,status) => {
+    let query = `call DIS_LIKE($1,$2,$3,$4)`;
+    let result = await sails.sendNativeQuery(query, [ storeId,customerId, Date.now(),status]);
     return result.rows
   }
 };
