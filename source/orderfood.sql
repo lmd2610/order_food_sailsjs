@@ -13,7 +13,8 @@
 
  Date: 20/03/2021 15:13:08
 */
-
+create database orderfood;
+use orderfood;
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
