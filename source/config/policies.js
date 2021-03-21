@@ -9,7 +9,7 @@
  */
 
 module.exports.policies = {
-    "*": true,
+    "*": ["admin", "pageId"],
     "order-address/import-order-address": "customer",
     "order-address/order-addresses": "customer",
     'order-address/update-order-address': "customer",
@@ -37,5 +37,9 @@ module.exports.policies = {
     'admin/login': true,
     'admin/register': true,
     'store/register': 'admin',
-    'store/login': true
+    'store/login': true,
+    'shipper/list-sale': "shipper",
+    "shipper/shipper-accept": "shipper",
+    "shipper/shipping": "shipper",
+    'shipper/shipped': "shipper"
 };

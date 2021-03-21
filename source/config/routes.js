@@ -49,6 +49,10 @@ module.exports.routes = {
   'POST /api/v1/shipper/login': { action: 'shipper/login' },
   'POST /api/v1/store/register': { action: 'store/register' },
   'POST /api/v1/store/login': { action: 'store/login' },
+  'POST /api/v1/shipper/list-sale': { action: 'shipper/list-sale' },
+  'POST /api/v1/shipper/shipper-accept': { action: 'shipper/shipper-accept' },
+  'POST /api/v1/shipper/shipping': { action: 'shipper/shipping' },
+  'POST /api/v1/shipper/shipped': { action: 'shipper/shipped' },
   /***************************************************************************
   *                                                                          *
   * More custom routes here...                                               *

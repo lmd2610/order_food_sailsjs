@@ -22,10 +22,10 @@ module.exports = {
   },
 
 
-  fn: async function (inputs) {
+  fn: async function (inputs,exits) {
     let { name, password, confimPassword, email,address,image } = inputs;
     let userInfo = await User.userInfoByEmail(email, 2);
-    if (userInfo) {
+    if (userInfo.length !== 0) {
       throw "user_existed"
     }
     if (password !== confimPassword) {

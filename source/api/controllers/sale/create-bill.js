@@ -36,7 +36,7 @@ module.exports = {
           message: "Đơn hàng của bạn đã hoàn thành"
         })
       }
-      await SaleHeader.updateSaleHeader(saleId)
+      await SaleHeader.updateSaleHeader(saleId,2)
       return exits.success({
         code: 1,
         message: "Tạo đơn hàng thành công"

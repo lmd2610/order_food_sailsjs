@@ -42,14 +42,19 @@ module.exports = {
     let result = await sails.sendNativeQuery(query, [saleId]);
     return result.rows;
   },
-  updateSaleHeader: async (saleId) => {
-    let query = `update saleheader set typeOfSaleId = 2 where id = $1`
-    await sails.sendNativeQuery(query, [saleId]);
+  updateSaleHeader: async (saleId,typeOfSaleId) => {
+    let query = `update saleheader set typeOfSaleId = $1 where id = $2`
+    await sails.sendNativeQuery(query, [saleId,typeOfSaleId]);
     return
   },
   saleHeaderInfoByCustomer: async (customerId) => {
-    let query = `select * from saleheader where customerId = 3 and typeOfSaleId = 7`
+    let query = `select * from saleheader where customerId = $1 and typeOfSaleId = 5`
     let result = await sails.sendNativeQuery(query, [customerId]);
+    return result.rows;
+  },
+  saleHeaderInfos:async(status)=>{
+    let query = `select * from orderheader where typeOfSaleId = $1`
+    let result = sails.sendNativeQuery(query, [status]);
     return result.rows;
   }
 };

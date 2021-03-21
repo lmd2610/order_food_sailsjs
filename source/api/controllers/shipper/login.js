@@ -18,12 +18,12 @@ module.exports = {
   },
 
 
-  fn: async function (inputs) {
+  fn: async function (inputs,exits) {
     let { email, password } = inputs
 
 
     let userInfo = await User.userInfoByEmail(email, 2)
-    if (!userInfo) {
+    if (userInfo.length ===0) {
       throw "user_not_exist"
     }
     console.log(userInfo[0].password)
