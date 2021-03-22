@@ -1,3 +1,4 @@
+const CustomerLogin = require("../models/CustomerLogin");
 
 module.exports = async function (req, res, next) {
 
@@ -11,6 +12,7 @@ module.exports = async function (req, res, next) {
     if (split[0].toLowerCase() !== "bearer") return res.forbidden();
     let customerInfo = await sails.helpers.jwt.verify(split[1])
     req.customer = customerInfo.data;
+    await CustomerLogin.createCustomerLogin(req.customer.id);
     next()
   } catch (error) {
     return res.forbidden();

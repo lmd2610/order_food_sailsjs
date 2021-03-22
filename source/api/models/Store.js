@@ -32,6 +32,12 @@ module.exports = {
     let query = `call REGISTER_STORE($1,$2,$3,$4)`;
     let result = await sails.sendNativeQuery(query, [name, password, email, Date.now()])
     return result;
+  },
+  countStoreCreateByDay:async(startTime, endTime) =>{
+    let query =`SELECT from_unixtime(createdAt/1000, '%Y-%m-%d') date_fm, COUNT(id) tong FROM store where createdAt > $1  and createdAt < $2 
+    GROUP BY date_fm ORDER BY date_fm DESC `
+    let result = await sails.sendNativeQuery(query, [startTime, endTime])
+    return result.rows;
   }
 };
 

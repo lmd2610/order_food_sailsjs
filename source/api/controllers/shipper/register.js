@@ -33,16 +33,12 @@ module.exports = {
     }
     password = sails.helpers.bscrypt.sign(password);
     let shipperId = await Shipper.createShipper(name, address,image,password, email)
-    let shipper = {
-      id: shipperId.rows[0][0]
-    }
-    let token = sails.helpers.jwt.sign(shipper)
+    
+    
     return exits.success({
       code: 0,
       message: "Thành công",
-      data: {
-        token
-      }
+      
     })
   }
 

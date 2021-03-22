@@ -25,24 +25,20 @@ module.exports = {
   fn: async function (inputs, exits) {
     let { name, password, confimPassword, email } = inputs;
     let userInfo = await User.userInfoByEmail(email, 3);
-    if (userInfo) {
+
+    if (userInfo.length !== 0) {
       throw "user_existed"
     }
     if (password !== confimPassword) {
       throw "password not match"
     }
     password = sails.helpers.bscrypt.sign(password);
-    let storeId = await Store.createStore(name, password, email)
-    let store = {
-      id: storeId.rows[0][0]
-    }
-    let token = sails.helpers.jwt.sign(store)
+    await Store.createStore(name, password, email)
+    
     return exits.success({
       code: 0,
       message: "Thành công",
-      data: {
-        token
-      }
+      
     })
 
   }

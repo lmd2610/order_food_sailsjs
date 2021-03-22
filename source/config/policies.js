@@ -41,5 +41,8 @@ module.exports.policies = {
     'shipper/list-sale': "shipper",
     "shipper/shipper-accept": "shipper",
     "shipper/shipping": "shipper",
-    'shipper/shipped': "shipper"
+    'shipper/shipped': "shipper",
+    'analytic/new-store': "admin",
+    'analytic/sale-success': "admin",
+    'analytic/count-customer-login': 'admin'
 };

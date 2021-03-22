@@ -21,11 +21,11 @@ module.exports = {
   fn: async function (inputs) {
 
     let { email, password } = inputs
-    let userInfo = await User.userInfoByEmail(email, 3)
-    if (!userInfo) {
+    let userInfo = await User.userInfoByEmail(email, 2)
+    if (userInfo.length ===0) {
       throw "user_not_exist"
     }
-    console.log(userInfo[0].password)
+ 
     let compare = sails.helpers.bscrypt.verify(password, userInfo[0].password)
     if (!compare) {
       throw "password_wrong"
