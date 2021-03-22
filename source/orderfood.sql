@@ -11,7 +11,7 @@
  Target Server Version : 80022
  File Encoding         : 65001
 
- Date: 20/03/2021 15:13:08
+ Date: 22/03/2021 10:06:02
 */
 create database orderfood;
 use orderfood;
@@ -49,7 +49,7 @@ CREATE TABLE `archive`  (
   `originalRecordId` longtext CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `id`(`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for banner
@@ -64,13 +64,13 @@ CREATE TABLE `banner`  (
   `isActive` tinyint(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `id`(`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of banner
 -- ----------------------------
-INSERT INTO `banner` VALUES (41241421, 124214214, 1, 'Banner1', 'dâdwdwdwd', 1);
-INSERT INTO `banner` VALUES (24124124, 124124, 2, 'Banner 2', '124124214', 0);
+INSERT INTO `banner` VALUES (41241421, 124214214, 1, 'Banner1', 'http://laminhducimage.tk/images?imageName=image_43bcaa73-0342-45ef-becf-216c6f6c0e90.jpg', 1);
+INSERT INTO `banner` VALUES (24124124, 124124, 2, 'Banner 2', 'http://laminhducimage.tk/images?imageName=image_43bcaa73-0342-45ef-becf-216c6f6c0e90.jpg', 0);
 
 -- ----------------------------
 -- Table structure for comment
@@ -111,9 +111,22 @@ CREATE TABLE `customer`  (
 -- ----------------------------
 -- Records of customer
 -- ----------------------------
-INSERT INTO `customer` VALUES (14214214124, 124124214, 1, 'Lã Minh Đức', 'Cầu Giấy', 'ffalfjsdlkfjslkfja', 1, NULL);
-INSERT INTO `customer` VALUES (2414214214, 2414214214, 2, 'ăf', NULL, NULL, 1, 12412421412421);
-INSERT INTO `customer` VALUES (1615437641782, 1615437641782, 3, 'Duc', NULL, NULL, 1, 124124124);
+INSERT INTO `customer` VALUES (14214214124, 124124214, 1, 'Lã Minh Đức', 'Cầu Giấy', 'http://laminhducimage.tk/images?imageName=image_43bcaa73-0342-45ef-becf-216c6f6c0e90.jpg', 1, NULL);
+INSERT INTO `customer` VALUES (2414214214, 2414214214, 2, 'ăf', NULL, 'http://laminhducimage.tk/images?imageName=image_43bcaa73-0342-45ef-becf-216c6f6c0e90.jpg', 1, 12412421412421);
+INSERT INTO `customer` VALUES (1615437641782, 1615437641782, 3, 'Duc', NULL, 'http://laminhducimage.tk/images?imageName=image_43bcaa73-0342-45ef-becf-216c6f6c0e90.jpg', 1, 124124124);
+INSERT INTO `customer` VALUES (1616381351480, 1616381351480, 4, 'Duc', NULL, NULL, 1, 124124124);
+
+-- ----------------------------
+-- Table structure for customerlogin
+-- ----------------------------
+DROP TABLE IF EXISTS `customerlogin`;
+CREATE TABLE `customerlogin`  (
+  `createdAt` bigint(0) NULL DEFAULT NULL,
+  `updatedAt` bigint(0) NULL DEFAULT NULL,
+  `id` int(0) NOT NULL AUTO_INCREMENT,
+  `customerId` int(0) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for food
@@ -141,15 +154,15 @@ CREATE TABLE `food`  (
   CONSTRAINT `food_ibfk_1` FOREIGN KEY (`typeOfFoodId`) REFERENCES `food` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `food_ibfk_2` FOREIGN KEY (`menuId`) REFERENCES `menu` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `food_ibfk_3` FOREIGN KEY (`storeId`) REFERENCES `store` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of food
 -- ----------------------------
-INSERT INTO `food` VALUES (4141242421, 14124242, 2, 'Cơm rang dưa bò', 20000, 2, 'đạwdwdwd', 'Cơm rang dưa bò', 'Cơm rang dưa bò ngon nhất vịnh bắc bộ', 30000, 1, 1, 0);
-INSERT INTO `food` VALUES (124214214, 124124, 3, 'Cơm rang đùi gà', 20000, 2, 'adwdwad', 'Cơm rang đùi gà', 'Cơm rang đùi gà ngon', 30000, 1, 1, 0);
-INSERT INTO `food` VALUES (124124124, 124124124, 4, 'Phở truyền thống', 20000, 3, '124124124', 'Phở truyền thống', 'Phở truyền thống ở việt nam', 30000, 1, 2, 0);
-INSERT INTO `food` VALUES (12412414214, 141412421, 5, 'Cocacola', 6000, NULL, '1241241', 'Đồ ống', 'Ccocal', 10000, 1, 3, 0);
+INSERT INTO `food` VALUES (4141242421, 14124242, 2, 'Cơm rang dưa bò', 20000, 2, 'http://laminhducimage.tk/images?imageName=image_43bcaa73-0342-45ef-becf-216c6f6c0e90.jpg', 'Cơm rang dưa bò', 'Cơm rang dưa bò ngon nhất vịnh bắc bộ', 30000, 1, 1, 0);
+INSERT INTO `food` VALUES (124214214, 124124, 3, 'Cơm rang đùi gà', 20000, 2, 'http://laminhducimage.tk/images?imageName=image_43bcaa73-0342-45ef-becf-216c6f6c0e90.jpg', 'Cơm rang đùi gà', 'Cơm rang đùi gà ngon', 30000, 1, 1, 0);
+INSERT INTO `food` VALUES (124124124, 124124124, 4, 'Phở truyền thống', 20000, 3, 'http://laminhducimage.tk/images?imageName=image_43bcaa73-0342-45ef-becf-216c6f6c0e90.jpg', 'Phở truyền thống', 'Phở truyền thống ở việt nam', 30000, 1, 2, 0);
+INSERT INTO `food` VALUES (12412414214, 141412421, 5, 'Cocacola', 6000, 4, 'http://laminhducimage.tk/images?imageName=image_43bcaa73-0342-45ef-becf-216c6f6c0e90.jpg', 'Đồ ống', 'Ccocal', 10000, 1, 3, 0);
 
 -- ----------------------------
 -- Table structure for imageofstore
@@ -165,7 +178,12 @@ CREATE TABLE `imageofstore`  (
   UNIQUE INDEX `id`(`id`) USING BTREE,
   INDEX `storeId`(`storeId`) USING BTREE,
   CONSTRAINT `imageofstore_ibfk_1` FOREIGN KEY (`storeId`) REFERENCES `store` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of imageofstore
+-- ----------------------------
+INSERT INTO `imageofstore` VALUES (14124214124, 14124124, 1, 'http://laminhducimage.tk/images?imageName=image_43bcaa73-0342-45ef-becf-216c6f6c0e90.jpg', 1);
 
 -- ----------------------------
 -- Table structure for likestore
@@ -184,7 +202,7 @@ CREATE TABLE `likestore`  (
   INDEX `storeId`(`storeId`) USING BTREE,
   CONSTRAINT `likestore_ibfk_1` FOREIGN KEY (`customerId`) REFERENCES `customer` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `likestore_ibfk_2` FOREIGN KEY (`storeId`) REFERENCES `store` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of likestore
@@ -206,7 +224,7 @@ CREATE TABLE `menu`  (
   UNIQUE INDEX `id`(`id`) USING BTREE,
   INDEX `storeId`(`storeId`) USING BTREE,
   CONSTRAINT `menu_ibfk_1` FOREIGN KEY (`storeId`) REFERENCES `store` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of menu
@@ -231,7 +249,7 @@ CREATE TABLE `orderaddress`  (
   UNIQUE INDEX `id`(`id`) USING BTREE,
   INDEX `customerId`(`customerId`) USING BTREE,
   CONSTRAINT `orderaddress_ibfk_1` FOREIGN KEY (`customerId`) REFERENCES `customer` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of orderaddress
@@ -281,7 +299,7 @@ CREATE TABLE `saledetail`  (
   INDEX `saleheader_idx`(`saleId`) USING BTREE,
   CONSTRAINT `saledetail_ibfk_2` FOREIGN KEY (`foodId`) REFERENCES `food` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `saleheader` FOREIGN KEY (`saleId`) REFERENCES `saleheader` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 33 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 34 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of saledetail
@@ -329,7 +347,7 @@ CREATE TABLE `saleheader`  (
   CONSTRAINT `saleheader_ibfk_2` FOREIGN KEY (`customerId`) REFERENCES `customer` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `saleheader_ibfk_3` FOREIGN KEY (`typeOfSaleId`) REFERENCES `typeofsale` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `saleheader_ibfk_4` FOREIGN KEY (`storeBranchId`) REFERENCES `storebranch` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 38 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 39 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of saleheader
@@ -389,7 +407,13 @@ CREATE TABLE `shipper`  (
   `status` double NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `id`(`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of shipper
+-- ----------------------------
+INSERT INTO `shipper` VALUES (1616364454631, 1616364454631, 1, 'Lã Minh Đức', 'Cầu Giấy', 'ạwfwjfowfjwof', 1);
+INSERT INTO `shipper` VALUES (1616364566657, 1616364566657, 2, 'Lã Minh Đức', 'Cầu Giấy', 'ạwfwjfowfjwof', 1);
 
 -- ----------------------------
 -- Table structure for store
@@ -409,12 +433,14 @@ CREATE TABLE `store`  (
   `totalLike` int(0) NULL DEFAULT 0,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `id`(`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of store
 -- ----------------------------
-INSERT INTO `store` VALUES (14124124, 12412412, 1, 'Cơm ngon', 0, 0, 0, 0, 0, 0, 2);
+INSERT INTO `store` VALUES (1616367935399, 1616367935399, 1, 'Cơm ngon', 0, 0, 0, 0, 0, 0, 2);
+INSERT INTO `store` VALUES (1616367935399, 1616367935399, 2, 'dvs', 0, 0, 0, 0, 0, 0, 0);
+INSERT INTO `store` VALUES (1616367944702, 1616367944702, 3, 'dvs', 0, 0, 0, 0, 0, 0, 0);
 
 -- ----------------------------
 -- Table structure for storebranch
@@ -433,7 +459,7 @@ CREATE TABLE `storebranch`  (
   UNIQUE INDEX `id`(`id`) USING BTREE,
   INDEX `storeId`(`storeId`) USING BTREE,
   CONSTRAINT `storebranch_ibfk_1` FOREIGN KEY (`storeId`) REFERENCES `store` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of storebranch
@@ -479,13 +505,15 @@ CREATE TABLE `typeofsale`  (
   `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `id`(`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of typeofsale
 -- ----------------------------
 INSERT INTO `typeofsale` VALUES (124124124, 1241421, 1, 'Tạo đơn hàng');
 INSERT INTO `typeofsale` VALUES (24124214, 124124, 2, 'Tạo đơn hàng thành công');
+INSERT INTO `typeofsale` VALUES (1424124, 24124214, 3, 'Shipper đã nhận đơn hàng');
+INSERT INTO `typeofsale` VALUES (124214214, 1241242, 4, 'Shipper đang giao hàng');
 
 -- ----------------------------
 -- Table structure for typeofservice
@@ -526,11 +554,14 @@ CREATE TABLE `user`  (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES (41241242, 124124, 1, 1, '0356798938', '123455', 'laminhduc2610@gmail.com', 1);
-INSERT INTO `user` VALUES (2414214214, 2414214214, 2, 1, NULL, 'ădawdưd', 'ldlđl', 2);
 INSERT INTO `user` VALUES (1615437641782, 1615437641782, 3, 1, NULL, '$2b$10$flY9XL4lbcLVX4i243.fzOv9XsIn/iF1igNV8gIpOLjaPjjXEaOPm', 'laduc43@gmail.com', 3);
 INSERT INTO `user` VALUES (1616224827483, 1616224827483, 4, 0, NULL, '$2b$10$2tY3QGtnv.i6r8wqwkTBjeGzrbbn.LyfpwNrg/24PYw6pWAftgvxm', 'laminhduc2610@gmail.com', 1);
 INSERT INTO `user` VALUES (1616224932571, 1616224932571, 5, 0, NULL, '$2b$10$vj8cMsxcv7/ZesoVZFtp7.kp56bNhQ/78FpSpDCPjj0Tuc/fM8lEy', 'laminhduc26101@gmail.com', 2);
+INSERT INTO `user` VALUES (1616364454631, 1616364454631, 6, 2, NULL, '$2b$10$Daity.5ErehGI/1ZKO.cn.EKAW5VflCXY1qwED2qeTvSovtGcldFu', 'laminhduc2610@gmail.com', 1);
+INSERT INTO `user` VALUES (1616364566657, 1616364566657, 7, 2, NULL, '$2b$10$FlRrY17LvYgd4cLrR3GhIuFBC21AFqpuTI5kgkmjGCrIudorHdHxO', 'laminhduc26110@gmail.com', 2);
+INSERT INTO `user` VALUES (1616367935399, 1616367935399, 8, 3, NULL, '$2b$10$m66a5p8X3SPCXudaf0qobeWKr97GtkbBsUCaBxloBJEkXrKMd/k5O', 'laminhduc2610@gmail.com', 2);
+INSERT INTO `user` VALUES (1616367944702, 1616367944702, 9, 3, NULL, '$2b$10$3oQ7S.H9hjBfsi5g0Xetu.KuaAjZLo0rJhRu5zCYnRLv5A5y7T946', 'laminhduc26110@gmail.com', 3);
+INSERT INTO `user` VALUES (1616381351480, 1616381351480, 10, 1, NULL, '$2b$10$skavrTwb/zjjHVlHQrxZJeBqp4ISjf5BTvsKDb//hz7zhngNSXEjG', 'laminhduc2610@gmail.com', 4);
 
 -- ----------------------------
 -- Table structure for usergroup
